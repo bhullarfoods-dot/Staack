@@ -73,28 +73,28 @@
       </div>
 
       <nav class="nav" aria-label="Casino sections">
-        <a class="nav__item is-active" href="#originals"><span class="nav__ic"><svg class="ic"><use href="#ic-diamond"/></svg></span> NodeRoll Originals</a>
-        <a class="nav__item" href="#top"><span class="nav__ic"><svg class="ic"><use href="#ic-trend"/></svg></span> Top Games</a>
-        <a class="nav__item" href="#new"><span class="nav__ic"><svg class="ic"><use href="#ic-sparkle"/></svg></span> New Games</a>
-        <a class="nav__item" href="#top"><span class="nav__ic"><svg class="ic"><use href="#ic-flame"/></svg></span> Hot Games</a>
-        <a class="nav__item" href="#slots"><span class="nav__ic"><svg class="ic"><use href="#ic-slots"/></svg></span> Slots</a>
-        <a class="nav__item" href="#originals"><span class="nav__ic"><svg class="ic"><use href="#ic-rocket"/></svg></span> Crash Games</a>
-        <a class="nav__item" href="#slots"><span class="nav__ic"><svg class="ic"><use href="#ic-live"/></svg></span> Live Casino</a>
-        <a class="nav__item" href="#top"><span class="nav__ic"><svg class="ic"><use href="#ic-star"/></svg></span> Favorites</a>
-        <a class="nav__item" href="#slots"><span class="nav__ic"><svg class="ic"><use href="#ic-layers"/></svg></span> Providers</a>
+        <a class="nav__item is-active" href="#originals" data-nav="originals"><span class="nav__ic"><svg class="ic"><use href="#ic-diamond"/></svg></span> NodeRoll Originals</a>
+        <a class="nav__item" href="#top" data-nav="top-games"><span class="nav__ic"><svg class="ic"><use href="#ic-trend"/></svg></span> Top Games</a>
+        <a class="nav__item" href="#new" data-nav="new-games"><span class="nav__ic"><svg class="ic"><use href="#ic-sparkle"/></svg></span> New Games</a>
+        <a class="nav__item" href="#top" data-nav="hot-games"><span class="nav__ic"><svg class="ic"><use href="#ic-flame"/></svg></span> Hot Games</a>
+        <a class="nav__item" href="#slots" data-nav="slots"><span class="nav__ic"><svg class="ic"><use href="#ic-slots"/></svg></span> Slots</a>
+        <a class="nav__item" href="#originals" data-nav="crash-games"><span class="nav__ic"><svg class="ic"><use href="#ic-rocket"/></svg></span> Crash Games</a>
+        <a class="nav__item" href="#slots" data-nav="live-casino"><span class="nav__ic"><svg class="ic"><use href="#ic-live"/></svg></span> Live Casino</a>
+        <a class="nav__item" href="#top" data-nav="favorites"><span class="nav__ic"><svg class="ic"><use href="#ic-star"/></svg></span> Favorites</a>
+        <a class="nav__item" href="#slots" data-nav="providers"><span class="nav__ic"><svg class="ic"><use href="#ic-layers"/></svg></span> Providers</a>
       </nav>
 
       <div class="nav__divider"></div>
 
       <nav class="nav nav--secondary" aria-label="More">
-        <a class="nav__item" href="#loyalty"><span class="nav__ic"><svg class="ic"><use href="#ic-hexagon"/></svg></span> NFT Vault</a>
-        <a class="nav__item" href="#loyalty"><span class="nav__ic"><svg class="ic"><use href="#ic-crown"/></svg></span> Loyalty</a>
-        <a class="nav__item" href="#promos"><span class="nav__ic"><svg class="ic"><use href="#ic-candles"/></svg></span> Futures</a>
-        <a class="nav__item" href="#promos"><span class="nav__ic"><svg class="ic"><use href="#ic-trophy"/></svg></span> Tournaments</a>
-        <a class="nav__item" href="#loyalty"><span class="nav__ic"><svg class="ic"><use href="#ic-rank"/></svg></span> Leaderboard</a>
+        <a class="nav__item" href="#loyalty" data-nav="nft-vault"><span class="nav__ic"><svg class="ic"><use href="#ic-hexagon"/></svg></span> NFT Vault</a>
+        <a class="nav__item" href="#loyalty" data-nav="loyalty"><span class="nav__ic"><svg class="ic"><use href="#ic-crown"/></svg></span> Loyalty</a>
+        <a class="nav__item" href="#promos" data-nav="futures"><span class="nav__ic"><svg class="ic"><use href="#ic-candles"/></svg></span> Futures</a>
+        <a class="nav__item" href="#promos" data-nav="tournaments"><span class="nav__ic"><svg class="ic"><use href="#ic-trophy"/></svg></span> Tournaments</a>
+        <a class="nav__item" href="#loyalty" data-nav="leaderboard"><span class="nav__ic"><svg class="ic"><use href="#ic-rank"/></svg></span> Leaderboard</a>
       </nav>
 
-      <a class="btn btn--ghost btn--block buycrypto" href="#"><svg class="ic"><use href="#ic-coin"/></svg> Buy Crypto</a>
+      <a class="btn btn--ghost btn--block buycrypto" href="#" data-ui="buy-crypto"><svg class="ic"><use href="#ic-coin"/></svg> Buy Crypto</a>
 
       <div class="sidebar__foot">
         <a href="#">Terms</a><span aria-hidden="true">·</span><a href="#">Privacy</a><span aria-hidden="true">·</span><a href="#">Fairness</a>
@@ -106,11 +106,11 @@
   <div class="main-region">
 
     <header class="topbar">
-      <button class="iconbtn topbar__menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false"><svg class="ic"><use href="#ic-menu"/></svg></button>
+      <button class="iconbtn topbar__menu" id="menuBtn" data-topnav="menu" aria-label="Toggle navigation" aria-expanded="false"><svg class="ic"><use href="#ic-menu"/></svg></button>
       <button class="iconbtn topbar__collapse" id="sidebarToggle" aria-label="Collapse sidebar" aria-expanded="true"><svg class="ic"><use href="#ic-chevL"/></svg></button>
 
       <div class="coin">
-        <span class="coin__mark" aria-hidden="true"></span>
+        <span class="coin__mark" data-ui="node" aria-hidden="true"></span>
         <span class="coin__name">NODE</span>
         <span class="coin__price">$7.05</span>
         <span class="coin__delta">+12.5%</span>
@@ -118,8 +118,8 @@
       <a class="btn btn--primary btn--sm coin__buy" href="#">Buy</a>
 
       <div class="gifts" aria-label="Active bonuses">
-        <div class="gift"><span class="gift__ic"><svg class="ic"><use href="#ic-gift"/></svg></span><span class="gift__t"><b data-countdown="3935">01:05:35</b><small>Daily case</small></span></div>
-        <div class="gift gift--alt"><span class="gift__ic"><svg class="ic"><use href="#ic-coin"/></svg></span><span class="gift__t"><b data-countdown="2538">00:42:18</b><small>Rakeback</small></span></div>
+        <div class="gift"><span class="gift__ic" data-topnav="daily-case"><svg class="ic"><use href="#ic-gift"/></svg></span><span class="gift__t"><b data-countdown="3935">01:05:35</b><small>Daily case</small></span></div>
+        <div class="gift gift--alt"><span class="gift__ic" data-topnav="rakeback"><svg class="ic"><use href="#ic-coin"/></svg></span><span class="gift__t"><b data-countdown="2538">00:42:18</b><small>Rakeback</small></span></div>
       </div>
 
       <div class="topbar__spacer"></div>
@@ -127,12 +127,12 @@
       <div class="onlinestat" title="Players online"><span class="dot dot--live"></span><b id="onlineCount">24,318</b> online</div>
 
       <div class="balance">
-        <span class="balance__cur" aria-hidden="true">₿</span>
+        <span class="balance__cur" data-ui="currency" aria-hidden="true">₿</span>
         <span class="balance__amt" id="balanceAmt">2.84190</span>
         <button class="balance__add" aria-label="Deposit">+</button>
       </div>
 
-      <button class="iconbtn" aria-label="Search"><svg class="ic"><use href="#ic-search"/></svg></button>
+      <button class="iconbtn" data-topnav="search" aria-label="Search"><svg class="ic"><use href="#ic-search"/></svg></button>
       <button class="iconbtn iconbtn--chat" id="chatToggle" aria-label="Toggle chat" aria-expanded="true"><svg class="ic"><use href="#ic-chat"/></svg><span class="iconbtn__dot"></span></button>
 
       <a class="btn btn--ghost btn--sm hide-sm" href="#">Log in</a>
@@ -250,7 +250,7 @@
         <section class="section" id="promos">
           <div class="promos">
             <a class="pcard pcard--casino" href="#">
-              <span class="pcard__art"><svg class="ic"><use href="#ic-spade"/></svg></span>
+              <span class="pcard__art" data-feature="casino"><svg class="ic"><use href="#ic-spade"/></svg></span>
               <div class="pcard__body">
                 <span class="eyebrow">Casino</span><h3>3,400+ games, one wallet</h3>
                 <p>Slots, live tables and NodeRoll originals.</p>
@@ -258,7 +258,7 @@
               </div>
             </a>
             <a class="pcard pcard--sports" href="#">
-              <span class="pcard__art"><svg class="ic"><use href="#ic-ball"/></svg></span>
+              <span class="pcard__art" data-feature="sports"><svg class="ic"><use href="#ic-ball"/></svg></span>
               <div class="pcard__body">
                 <span class="eyebrow">Sports</span><h3>Bet on 40+ leagues live</h3>
                 <p>Crypto odds, cash-out and combo boosts.</p>
@@ -266,7 +266,7 @@
               </div>
             </a>
             <div class="pcard pcard--soon" aria-disabled="true">
-              <span class="pcard__art"><svg class="ic"><use href="#ic-candles"/></svg></span>
+              <span class="pcard__art" data-feature="futures"><svg class="ic"><use href="#ic-candles"/></svg></span>
               <div class="pcard__body">
                 <span class="eyebrow">Futures</span><h3>Trade price moves</h3>
                 <p>Perpetuals on your favorite coins.</p>
@@ -314,11 +314,19 @@
                 <span class="pay" data-coin="btc">BTC</span>
                 <span class="pay" data-coin="eth">ETH</span>
                 <span class="pay" data-coin="usdt">USDT</span>
+                <span class="pay" data-coin="usdc">USDC</span>
                 <span class="pay" data-coin="sol">SOL</span>
                 <span class="pay" data-coin="ltc">LTC</span>
                 <span class="pay" data-coin="xrp">XRP</span>
                 <span class="pay" data-coin="doge">DOGE</span>
                 <span class="pay" data-coin="ton">TON</span>
+                <span class="pay" data-coin="bnb">BNB</span>
+                <span class="pay" data-coin="trx">TRX</span>
+                <span class="pay" data-coin="ada">ADA</span>
+                <span class="pay" data-coin="matic">MATIC</span>
+                <span class="pay" data-coin="bch">BCH</span>
+                <span class="pay" data-coin="dot">DOT</span>
+                <span class="pay" data-coin="shiba">SHIB</span>
               </div>
             </div>
             <nav class="footer__nav" aria-label="Footer">

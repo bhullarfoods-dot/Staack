@@ -35,15 +35,74 @@
   },
   "icons": {},
   "promos": {
-    "race": "promos/3.png",
-    "refer": "promos/4.png"
+    "race": "features/character_6.png",
+    "refer": "features/character_2.png"
   },
-  "heroBg": {},
-  "heroChar": {},
-  "sidebar": {},
-  "topnav": {},
-  "wins": {},
-  "ui": {},
-  "crypto": {},
-  "features": {}
+  "heroBg": {
+    "bg-1": "hero/bg/bg-5.jpeg",
+    "bg-2": "hero/bg/bg-6.jpeg",
+    "bg-3": "hero/bg/bg-7.jpeg",
+    "bg-4": "hero/bg/bg-8.jpeg"
+  },
+  "heroChar": {
+    "char-1": "hero/character/char-5.png",
+    "char-2": "hero/character/char-6.png",
+    "char-3": "hero/character/char-7.png",
+    "char-4": "hero/character/char-8.png"
+  },
+  "sidebar": {
+    "originals": "sidebar/04eb58c0-700b-4690-a999-8052c45f86cf.svg",
+    "top-games": "sidebar/00c26725-a649-4614-bfe9-dbb608854aa7.svg",
+    "new-games": "sidebar/0c9d60b8-6674-4920-9689-60af329a2dd3.svg",
+    "hot-games": "sidebar/20aa15b2-ea6c-4792-99b9-6b8e9e115a37.svg",
+    "slots": "sidebar/slots.svg",
+    "crash-games": "sidebar/crash.svg",
+    "live-casino": "sidebar/live%20casino.svg",
+    "favorites": "sidebar/0fbcc511-4a6f-4046-add3-9985d14bf908.svg",
+    "nft-vault": "sidebar/90745443-19aa-47ce-9cc7-aae3a5769323.svg",
+    "loyalty": "sidebar/73226414-a6cc-418c-a840-5f6cceef6992.svg",
+    "tournaments": "sidebar/2c11d9b5-a716-4375-a8a0-f2cf97e19d85.svg"
+  },
+  "topnav": {
+    "search": "topnav/search.svg",
+    "daily-case": "topnav/daily-case.svg",
+    "rakeback": "topnav/rakeback.svg"
+  },
+  "ui": {
+    "buy-crypto": "topnav/buy-crypto.svg",
+    "currency": "topnav/currency.svg",
+    "node": "topnav/node.svg"
+  },
+  "wins": [
+    "wins/177f396d83294c4fb254df5ca7c59189_2x_w175.avif",
+    "wins/28e009d9bafa2336d5bbd6ef322d082b8fd0312a_2x_w175.avif",
+    "wins/78a5b26261efe01fa9828cd4dd3859a9f947b303_2x_w175.avif",
+    "wins/91_6488_oak_dragonpearls_12_w175.avif",
+    "wins/aa760484975ffff9f1b17956320c5664f7375181_2x_w175.avif",
+    "wins/bgm_misscherryfruits_w175.avif",
+    "wins/end_windycity_w175.avif"
+  ],
+  "crypto": {
+    "btc": "crypto/btc.svg",
+    "eth": "crypto/eth.svg",
+    "usdt": "crypto/usdt.svg",
+    "usdc": "crypto/usdc.svg",
+    "sol": "crypto/sol.svg",
+    "ltc": "crypto/ltc.svg",
+    "xrp": "crypto/xrp.svg",
+    "doge": "crypto/doge.svg",
+    "ton": "crypto/ton.svg",
+    "bnb": "crypto/bnb.svg",
+    "trx": "crypto/trx.svg",
+    "ada": "crypto/ada.svg",
+    "matic": "crypto/matic.svg",
+    "bch": "crypto/bch.svg",
+    "dot": "crypto/dot.svg",
+    "shiba": "crypto/shiba.svg"
+  },
+  "features": {
+    "casino": "features/04.png",
+    "sports": "features/05.png",
+    "futures": "features/06.png"
+  }
 }

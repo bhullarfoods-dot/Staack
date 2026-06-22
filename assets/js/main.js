@@ -224,6 +224,30 @@
     im.onload = () => { btn.innerHTML = ""; btn.appendChild(im); btn.style.background = "none"; };
     im.src = "assets/img/" + file;
   };
+  // Colored icons must keep their own palette -> rendered as <img>. Everything else is
+  // inline-injected so `currentColor` follows the theme (incl. hover/active states);
+  // near-black hard-coded fills are normalised to currentColor so they stay visible.
+  const IMG_ICONS = new Set(["currency", "node"]);
+  const DARK_FILL = /fill="#(0{3}|0{6}|1c274c)"/ig;
+  const inlineIcon = (host, file) => {
+    fetch("assets/img/" + file).then(r => r.ok ? r.text() : null).then(txt => {
+      if (!txt || !/<svg/i.test(txt)) return;
+      const svg = el("div", null, txt.replace(DARK_FILL, 'fill="currentColor"')).querySelector("svg");
+      if (!svg) return;
+      svg.removeAttribute("width"); svg.removeAttribute("height"); svg.removeAttribute("style");
+      svg.setAttribute("class", "uic");
+      const old = host.querySelector("svg"); if (old) old.replaceWith(svg); else { host.textContent = ""; host.appendChild(svg); }
+    }).catch(() => {});
+  };
+  const imgIcon = (host, file, cls) => {
+    const im = el("img", cls); im.alt = ""; im.loading = "lazy";
+    im.onload = () => { const old = host.querySelector("svg"); if (old) old.replaceWith(im); else { host.textContent = ""; host.style.background = "none"; host.appendChild(im); } };
+    im.src = "assets/img/" + file;
+  };
+  const wireIcons = (sel, table, attr) => {
+    if (!table) return;
+    $$(sel).forEach(h => { const k = h.dataset[attr], f = table[k]; if (!f) return; IMG_ICONS.has(k) ? imgIcon(h, f, "ui__img") : inlineIcon(h, f); });
+  };
   fetch("assets/img/manifest.json", { cache: "no-cache" })
     .then(r => r.ok ? r.json() : null)
     .then(m => {
@@ -231,6 +255,21 @@
       upgradeHero(m);
       if (m.games) $$(".gcard[data-imgkey]").forEach(c => { const f = m.games[c.dataset.imgkey]; if (f) upgradeCardArt(c, f, c.dataset.name); });
       if (m.icons) $$(".ingame[data-key]").forEach(t => { const f = m.icons[t.dataset.key]; if (f) upgradeIcon(t, f, t.title); });
+      wireIcons(".nav__item[data-nav]", m.sidebar, "nav");
+      wireIcons("[data-topnav]", m.topnav, "topnav");
+      wireIcons("[data-ui]", m.ui, "ui");
+      if (m.features) $$("[data-feature]").forEach(h => { const f = m.features[h.dataset.feature]; if (f) imgIcon(h, f, "pcard__img"); });
+      if (m.crypto) $$(".pay[data-coin]").forEach(p => {
+        const f = m.crypto[p.dataset.coin]; if (!f) return;
+        const im = el("img", "pay__img"); im.alt = p.textContent.trim(); im.loading = "lazy";
+        im.onload = () => { p.textContent = ""; p.appendChild(im); };
+        im.src = "assets/img/" + f;
+      });
+      if (Array.isArray(m.wins) && m.wins.length) $$(".win__ic").forEach((ic, i) => {
+        const im = el("img", "win__img"); im.alt = ""; im.loading = "lazy";
+        im.onload = () => { ic.textContent = ""; ic.style.background = "none"; ic.appendChild(im); };
+        im.src = "assets/img/" + m.wins[i % m.wins.length];
+      });
       if (m.promos) $$(".spromo[data-promo]").forEach(s => {
         const f = m.promos[s.dataset.promo]; if (!f) return;
         const im = el("img", "spromo__img"); im.alt = ""; im.loading = "lazy";
