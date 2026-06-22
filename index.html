@@ -13,10 +13,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 
-<!-- favicon: brand mark only (the on-page logo is text, per brand spec) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234405e4'/%3E%3Cstop offset='.55' stop-color='%23f50bba'/%3E%3Cstop offset='1' stop-color='%2313aded'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='28' height='28' rx='9' fill='url(%23g)'/%3E%3Cg fill='%230a092c'%3E%3Ccircle cx='12' cy='12' r='2.4'/%3E%3Ccircle cx='20' cy='12' r='2.4'/%3E%3Ccircle cx='12' cy='20' r='2.4'/%3E%3Ccircle cx='20' cy='20' r='2.4'/%3E%3C/g%3E%3C/svg%3E" />
 </head>
 <body>
+
+<!-- ===================== ICON SPRITE (outline, 24x24) ===================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="ic-diamond" viewBox="0 0 24 24"><path d="M12 3 20 10 12 21 4 10Z"/><path d="M4 10h16"/></symbol>
+<symbol id="ic-trend" viewBox="0 0 24 24"><path d="M3 17 9.5 11l3.5 3.5L21 7"/><path d="M16 7h5v5"/></symbol>
+<symbol id="ic-sparkle" viewBox="0 0 24 24"><path d="M12 3.5 13.9 9 19.5 11 13.9 13 12 18.5 10.1 13 4.5 11 10.1 9Z"/></symbol>
+<symbol id="ic-flame" viewBox="0 0 24 24"><path d="M12 3c3 3.5 5 6 5 9a5 5 0 0 1-10 0c0-1.4.6-2.6 1.7-3.6C10 11 12 9.2 12 3Z"/></symbol>
+<symbol id="ic-slots" viewBox="0 0 24 24"><rect x="4" y="5" width="4.4" height="14" rx="2"/><rect x="9.8" y="5" width="4.4" height="14" rx="2"/><rect x="15.6" y="5" width="4.4" height="14" rx="2"/></symbol>
+<symbol id="ic-rocket" viewBox="0 0 24 24"><path d="M5 19c0-3 1-5.5 3.2-7.7C11 8.5 15 6.5 19.5 6.5 19.5 11 17.5 15 14.7 17.8 12.5 20 10 21 7 21"/><circle cx="14.5" cy="9.5" r="1.6"/><path d="M5 19l2.5-1M5 19l1-2.5"/></symbol>
+<symbol id="ic-live" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.4"/><path d="M7.6 7.6a6 6 0 0 0 0 8.8M16.4 7.6a6 6 0 0 1 0 8.8"/></symbol>
+<symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 4 14.3 9.2 20 9.7 15.7 13.5 17 19 12 16.2 7 19 8.3 13.5 4 9.7 9.7 9.2Z"/></symbol>
+<symbol id="ic-layers" viewBox="0 0 24 24"><path d="M12 4 21 9 12 14 3 9Z"/><path d="M3 14l9 5 9-5"/></symbol>
+<symbol id="ic-hexagon" viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21 4 16.5v-9Z"/></symbol>
+<symbol id="ic-crown" viewBox="0 0 24 24"><path d="M4 18h16M4.5 18 6 8l4.5 5L12 5l1.5 8L18 8l1.5 10"/></symbol>
+<symbol id="ic-candles" viewBox="0 0 24 24"><path d="M7 4v4.5M7 15.5V20M17 5v3M17 15v4"/><rect x="5" y="8.5" width="4" height="7" rx="1.2"/><rect x="15" y="8" width="4" height="7" rx="1.2"/></symbol>
+<symbol id="ic-trophy" viewBox="0 0 24 24"><path d="M8 4h8v4a4 4 0 0 1-8 0Z"/><path d="M8 6H5a3 3 0 0 0 3 3M16 6h3a3 3 0 0 1-3 3M12 12v4M9 20h6M10 16h4"/></symbol>
+<symbol id="ic-rank" viewBox="0 0 24 24"><rect x="4" y="11" width="4" height="8" rx="1"/><rect x="10" y="6" width="4" height="13" rx="1"/><rect x="16" y="14" width="4" height="5" rx="1"/></symbol>
+<symbol id="ic-dice" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="9" cy="9" r="1.3" fill="currentColor"/><circle cx="15" cy="15" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></symbol>
+<symbol id="ic-plinko" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="5" r="1.2"/><circle cx="9" cy="10" r="1.2"/><circle cx="15" cy="10" r="1.2"/><circle cx="6" cy="15" r="1.2"/><circle cx="12" cy="15" r="1.2"/><circle cx="18" cy="15" r="1.2"/></g><path d="M5 20h14"/></symbol>
+<symbol id="ic-cards" viewBox="0 0 24 24"><rect x="7" y="5" width="10" height="14" rx="2"/><path d="M12 15.5 9.2 12.8a1.9 1.9 0 1 1 2.8-1 1.9 1.9 0 1 1 2.8 1Z" fill="currentColor"/></symbol>
+<symbol id="ic-gift" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M4 13h16M12 9v11M12 9C9.5 9 7.5 4.5 12 6.2 16.5 4.5 14.5 9 12 9Z"/></symbol>
+<symbol id="ic-spade" viewBox="0 0 24 24"><path d="M12 4c3 4 7 6 7 9a3.4 3.4 0 0 1-5.6 2.6C13.6 17.4 14 18.6 15.2 20H8.8c1.2-1.4 1.6-2.6 1.8-4.4A3.4 3.4 0 0 1 5 13c0-3 4-5 7-9Z" fill="currentColor"/></symbol>
+<symbol id="ic-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8.2 15 10.4 13.9 14h-3.8L9 10.4Z" fill="currentColor"/><path d="M12 4v4.2M5 9.5l3.8 2.8M19 9.5l-3.8 2.8M8.2 19l1.9-5M15.8 19l-1.9-5"/></symbol>
+<symbol id="ic-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M10 9h3.5a1.8 1.8 0 0 1 0 3.6H10M10 12.6h4a1.8 1.8 0 0 1 0 3.4H10V8.5"/></symbol>
+<symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></symbol>
+<symbol id="ic-chat" viewBox="0 0 24 24"><path d="M5 5h14v10H9l-4 4Z"/></symbol>
+<symbol id="ic-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="ic-chevL" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+<symbol id="ic-chevR" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+<symbol id="ic-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-4 16-4-7-8-1Z"/></symbol>
+<symbol id="ic-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16M6.3 6.3 17.7 17.7M17.7 6.3 6.3 17.7"/></symbol>
+</defs></svg>
 
 <!-- ambient brand backdrop (fixed, non-interactive, GPU-cheap) -->
 <div class="backdrop" aria-hidden="true">
@@ -35,7 +66,6 @@
 
       <a class="logo" href="#" aria-label="NodeRoll home">NodeRoll</a>
 
-      <!-- in-house games quick strip -->
       <section class="ingames" aria-label="In-house games">
         <div class="ingames__head">
           <span class="eyebrow">In-house games</span>
@@ -44,37 +74,34 @@
         <div class="ingames__strip" id="ingameStrip"><!-- JS --></div>
       </section>
 
-      <!-- casino / sports -->
       <div class="seg" role="tablist" aria-label="Mode">
         <button class="seg__btn is-active" role="tab" aria-selected="true" data-mode="casino">Casino</button>
         <button class="seg__btn" role="tab" aria-selected="false" data-mode="sports">Sports</button>
       </div>
 
       <nav class="nav" aria-label="Casino sections">
-        <a class="nav__item is-active" href="#originals">
-          <span class="nav__ic" aria-hidden="true">◆</span> NodeRoll Originals
-        </a>
-        <a class="nav__item" href="#top"><span class="nav__ic" aria-hidden="true">▲</span> Top Games</a>
-        <a class="nav__item" href="#new"><span class="nav__ic" aria-hidden="true">✦</span> New Games</a>
-        <a class="nav__item" href="#top"><span class="nav__ic" aria-hidden="true">♨</span> Hot Games</a>
-        <a class="nav__item" href="#slots"><span class="nav__ic" aria-hidden="true">▦</span> Slots</a>
-        <a class="nav__item" href="#originals"><span class="nav__ic" aria-hidden="true">✸</span> Crash Games</a>
-        <a class="nav__item" href="#slots"><span class="nav__ic" aria-hidden="true">◉</span> Live Casino</a>
-        <a class="nav__item" href="#top"><span class="nav__ic" aria-hidden="true">★</span> Favorites</a>
-        <a class="nav__item" href="#slots"><span class="nav__ic" aria-hidden="true">⬗</span> Providers</a>
+        <a class="nav__item is-active" href="#originals"><span class="nav__ic"><svg class="ic"><use href="#ic-diamond"/></svg></span> NodeRoll Originals</a>
+        <a class="nav__item" href="#top"><span class="nav__ic"><svg class="ic"><use href="#ic-trend"/></svg></span> Top Games</a>
+        <a class="nav__item" href="#new"><span class="nav__ic"><svg class="ic"><use href="#ic-sparkle"/></svg></span> New Games</a>
+        <a class="nav__item" href="#top"><span class="nav__ic"><svg class="ic"><use href="#ic-flame"/></svg></span> Hot Games</a>
+        <a class="nav__item" href="#slots"><span class="nav__ic"><svg class="ic"><use href="#ic-slots"/></svg></span> Slots</a>
+        <a class="nav__item" href="#originals"><span class="nav__ic"><svg class="ic"><use href="#ic-rocket"/></svg></span> Crash Games</a>
+        <a class="nav__item" href="#slots"><span class="nav__ic"><svg class="ic"><use href="#ic-live"/></svg></span> Live Casino</a>
+        <a class="nav__item" href="#top"><span class="nav__ic"><svg class="ic"><use href="#ic-star"/></svg></span> Favorites</a>
+        <a class="nav__item" href="#slots"><span class="nav__ic"><svg class="ic"><use href="#ic-layers"/></svg></span> Providers</a>
       </nav>
 
       <div class="nav__divider"></div>
 
       <nav class="nav nav--secondary" aria-label="More">
-        <a class="nav__item" href="#loyalty"><span class="nav__ic" aria-hidden="true">❖</span> NFT Vault</a>
-        <a class="nav__item" href="#loyalty"><span class="nav__ic" aria-hidden="true">♛</span> Loyalty</a>
-        <a class="nav__item" href="#promos"><span class="nav__ic" aria-hidden="true">▣</span> Futures</a>
-        <a class="nav__item" href="#promos"><span class="nav__ic" aria-hidden="true">⚑</span> Tournaments</a>
-        <a class="nav__item" href="#loyalty"><span class="nav__ic" aria-hidden="true">⬢</span> Leaderboard</a>
+        <a class="nav__item" href="#loyalty"><span class="nav__ic"><svg class="ic"><use href="#ic-hexagon"/></svg></span> NFT Vault</a>
+        <a class="nav__item" href="#loyalty"><span class="nav__ic"><svg class="ic"><use href="#ic-crown"/></svg></span> Loyalty</a>
+        <a class="nav__item" href="#promos"><span class="nav__ic"><svg class="ic"><use href="#ic-candles"/></svg></span> Futures</a>
+        <a class="nav__item" href="#promos"><span class="nav__ic"><svg class="ic"><use href="#ic-trophy"/></svg></span> Tournaments</a>
+        <a class="nav__item" href="#loyalty"><span class="nav__ic"><svg class="ic"><use href="#ic-rank"/></svg></span> Leaderboard</a>
       </nav>
 
-      <a class="btn btn--ghost btn--block buycrypto" href="#">Buy Crypto</a>
+      <a class="btn btn--ghost btn--block buycrypto" href="#"><svg class="ic"><use href="#ic-coin"/></svg> Buy Crypto</a>
 
       <div class="sidebar__foot">
         <a href="#">Terms</a><span aria-hidden="true">·</span><a href="#">Privacy</a><span aria-hidden="true">·</span><a href="#">Fairness</a>
@@ -85,11 +112,8 @@
   <!-- ============================ MAIN REGION ========================== -->
   <div class="main-region">
 
-    <!-- ------------------------------ TOPBAR ------------------------------ -->
     <header class="topbar">
-      <button class="iconbtn topbar__menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
-      </button>
+      <button class="iconbtn topbar__menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false"><svg class="ic"><use href="#ic-menu"/></svg></button>
 
       <div class="coin">
         <span class="coin__mark" aria-hidden="true"></span>
@@ -100,15 +124,13 @@
       <a class="btn btn--primary btn--sm coin__buy" href="#">Buy</a>
 
       <div class="gifts" aria-label="Active bonuses">
-        <div class="gift"><span class="gift__ic" aria-hidden="true">◈</span><b data-countdown="3935">01:05:35</b><small>Daily case</small></div>
-        <div class="gift gift--alt"><span class="gift__ic" aria-hidden="true">⬡</span><b data-countdown="2538">00:42:18</b><small>Rakeback</small></div>
+        <div class="gift"><span class="gift__ic"><svg class="ic"><use href="#ic-gift"/></svg></span><span class="gift__t"><b data-countdown="3935">01:05:35</b><small>Daily case</small></span></div>
+        <div class="gift gift--alt"><span class="gift__ic"><svg class="ic"><use href="#ic-coin"/></svg></span><span class="gift__t"><b data-countdown="2538">00:42:18</b><small>Rakeback</small></span></div>
       </div>
 
       <div class="topbar__spacer"></div>
 
-      <div class="onlinestat" title="Players online">
-        <span class="dot dot--live"></span><b id="onlineCount">24,318</b> online
-      </div>
+      <div class="onlinestat" title="Players online"><span class="dot dot--live"></span><b id="onlineCount">24,318</b> online</div>
 
       <div class="balance">
         <span class="balance__cur" aria-hidden="true">₿</span>
@@ -116,25 +138,21 @@
         <button class="balance__add" aria-label="Deposit">+</button>
       </div>
 
-      <button class="iconbtn" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
-      <button class="iconbtn iconbtn--chat" id="chatToggle" aria-label="Toggle chat" aria-expanded="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v10H9l-4 4z"/></svg><span class="iconbtn__dot"></span></button>
+      <button class="iconbtn" aria-label="Search"><svg class="ic"><use href="#ic-search"/></svg></button>
+      <button class="iconbtn iconbtn--chat" id="chatToggle" aria-label="Toggle chat" aria-expanded="true"><svg class="ic"><use href="#ic-chat"/></svg><span class="iconbtn__dot"></span></button>
 
       <a class="btn btn--ghost btn--sm hide-sm" href="#">Log in</a>
       <a class="btn btn--primary btn--sm" href="#">Sign up</a>
 
-      <button class="avatar" aria-label="Account">
-        <span class="avatar__face">VX</span>
-      </button>
+      <button class="avatar" aria-label="Account"><span class="avatar__face">VX</span></button>
     </header>
 
-    <!-- --------------------------- CONTENT GRID --------------------------- -->
     <div class="content-grid" id="contentGrid">
 
       <main class="content" id="lobby">
 
         <!-- ---------- HERO ROW: 570x265 banner + side promos ---------- -->
         <section class="hero-row" aria-label="Featured">
-          <!-- HERO BANNER — exactly 570 x 265 px (brand spec) -->
           <article class="hero" id="hero">
             <div class="hero__glow" aria-hidden="true"></div>
             <div class="hero__body">
@@ -146,26 +164,18 @@
                 <a class="btn btn--quiet" href="#">How it works</a>
               </div>
             </div>
-            <div class="hero__art" aria-hidden="true">
-              <div class="mascot">
-                <span class="mascot__coin mascot__coin--1">₿</span>
-                <span class="mascot__coin mascot__coin--2">Ξ</span>
-                <span class="mascot__coin mascot__coin--3">◆</span>
-                <span class="mascot__die"><i></i><i></i><i></i><i></i></span>
-              </div>
-            </div>
+            <div class="hero__art" id="heroArt" aria-hidden="true"><!-- JS: SVG scene --></div>
             <span class="hero__size" aria-hidden="true">570 × 265</span>
           </article>
 
-          <!-- side promo stack -->
           <div class="promo-stack">
             <a class="spromo spromo--a" href="#">
               <div class="spromo__txt"><span class="eyebrow">Weekly</span><h3>Race for $50,000</h3><p>Climb the wager leaderboard</p></div>
-              <span class="spromo__glyph" aria-hidden="true">♛</span>
+              <span class="spromo__glyph"><svg class="ic"><use href="#ic-trophy"/></svg></span>
             </a>
             <a class="spromo spromo--b" href="#">
               <div class="spromo__txt"><span class="eyebrow">Refer</span><h3>Earn 30% rakeback</h3><p>For every friend you invite</p></div>
-              <span class="spromo__glyph" aria-hidden="true">❖</span>
+              <span class="spromo__glyph"><svg class="ic"><use href="#ic-gift"/></svg></span>
             </a>
           </div>
         </section>
@@ -173,9 +183,7 @@
         <!-- ---------------------- WINNERS LIVE FEED ---------------------- -->
         <section class="ticker" aria-label="Live wins">
           <span class="ticker__label"><span class="dot dot--live"></span> Live wins</span>
-          <div class="ticker__viewport">
-            <ul class="ticker__track" id="winTrack"><!-- JS --></ul>
-          </div>
+          <div class="ticker__viewport"><ul class="ticker__track" id="winTrack"><!-- JS --></ul></div>
         </section>
 
         <!-- ----------------------- NODEROLL ORIGINALS --------------------- -->
@@ -183,8 +191,8 @@
           <div class="section__head">
             <h2 class="section__title">NodeRoll Originals</h2>
             <div class="rail__nav">
-              <button class="iconbtn iconbtn--round" data-rail="origRail" data-dir="-1" aria-label="Scroll left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
-              <button class="iconbtn iconbtn--round" data-rail="origRail" data-dir="1" aria-label="Scroll right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+              <button class="iconbtn iconbtn--round" data-rail="origRail" data-dir="-1" aria-label="Scroll left"><svg class="ic"><use href="#ic-chevL"/></svg></button>
+              <button class="iconbtn iconbtn--round" data-rail="origRail" data-dir="1" aria-label="Scroll right"><svg class="ic"><use href="#ic-chevR"/></svg></button>
             </div>
           </div>
           <div class="rail" id="origRail"><!-- JS --></div>
@@ -198,7 +206,6 @@
           </div>
 
           <div class="game">
-            <!-- bet panel -->
             <form class="panel" id="minesPanel" autocomplete="off" onsubmit="return false">
               <span class="panel__tag">NodeRoll Original</span>
               <div class="seg seg--full" role="group" aria-label="Bet mode">
@@ -232,7 +239,6 @@
               <p class="panel__note">Demo board · no real funds are wagered</p>
             </form>
 
-            <!-- board -->
             <div class="board">
               <div class="board__top">
                 <span class="board__win">Max win <b>$100,924</b></span>
@@ -246,28 +252,17 @@
 
         <!-- -------------------------- TOP GAMES -------------------------- -->
         <section class="section" id="top">
-          <div class="section__head">
-            <h2 class="section__title">Top Games</h2>
-            <a class="section__all" href="#">See all</a>
-          </div>
+          <div class="section__head"><h2 class="section__title">Top Games</h2><a class="section__all" href="#">See all</a></div>
           <div class="grid" id="topGrid"><!-- JS --></div>
         </section>
 
-        <!-- -------------------------- NEW GAMES -------------------------- -->
         <section class="section" id="new">
-          <div class="section__head">
-            <h2 class="section__title">New Games</h2>
-            <a class="section__all" href="#">See all</a>
-          </div>
+          <div class="section__head"><h2 class="section__title">New Games</h2><a class="section__all" href="#">See all</a></div>
           <div class="grid" id="newGrid"><!-- JS --></div>
         </section>
 
-        <!-- --------------------------- SLOTS ---------------------------- -->
         <section class="section" id="slots">
-          <div class="section__head">
-            <h2 class="section__title">Slots &amp; Live</h2>
-            <a class="section__all" href="#">See all</a>
-          </div>
+          <div class="section__head"><h2 class="section__title">Slots &amp; Live</h2><a class="section__all" href="#">See all</a></div>
           <div class="grid" id="slotGrid"><!-- JS --></div>
         </section>
 
@@ -275,28 +270,25 @@
         <section class="section" id="promos">
           <div class="promos">
             <a class="pcard pcard--casino" href="#">
-              <div class="pcard__art" aria-hidden="true"><span>♠</span><span>♥</span><span>♦</span><span>♣</span></div>
+              <span class="pcard__art"><svg class="ic"><use href="#ic-spade"/></svg></span>
               <div class="pcard__body">
-                <span class="eyebrow">Casino</span>
-                <h3>3,400+ games, one wallet</h3>
+                <span class="eyebrow">Casino</span><h3>3,400+ games, one wallet</h3>
                 <p>Slots, live tables and NodeRoll originals.</p>
                 <span class="btn btn--primary btn--sm">Enter casino</span>
               </div>
             </a>
             <a class="pcard pcard--sports" href="#">
-              <div class="pcard__art pcard__art--sports" aria-hidden="true"><b>1</b><b>X</b><b>2</b></div>
+              <span class="pcard__art"><svg class="ic"><use href="#ic-ball"/></svg></span>
               <div class="pcard__body">
-                <span class="eyebrow">Sports</span>
-                <h3>Bet on 40+ leagues live</h3>
+                <span class="eyebrow">Sports</span><h3>Bet on 40+ leagues live</h3>
                 <p>Crypto odds, cash-out and combo boosts.</p>
                 <span class="btn btn--neon btn--sm">Open sportsbook</span>
               </div>
             </a>
             <div class="pcard pcard--soon" aria-disabled="true">
-              <div class="pcard__art pcard__art--soon" aria-hidden="true">▣</div>
+              <span class="pcard__art"><svg class="ic"><use href="#ic-candles"/></svg></span>
               <div class="pcard__body">
-                <span class="eyebrow">Futures</span>
-                <h3>Trade price moves</h3>
+                <span class="eyebrow">Futures</span><h3>Trade price moves</h3>
                 <p>Perpetuals on your favorite coins.</p>
                 <span class="badge badge--soon">Coming soon</span>
               </div>
@@ -306,23 +298,15 @@
 
         <!-- ------------------------ LOYALTY BENTO ------------------------ -->
         <section class="section" id="loyalty">
-          <div class="section__head">
-            <h2 class="section__title">Your loyalty</h2>
-            <span class="section__meta">Level 4 · Sapphire</span>
-          </div>
+          <div class="section__head"><h2 class="section__title">Your loyalty</h2><span class="section__meta">Level 4 · Sapphire</span></div>
           <div class="bento">
             <article class="tile tile--level">
               <span class="eyebrow">Current level</span>
               <div class="level">
                 <span class="level__badge" aria-hidden="true">04</span>
-                <div class="level__meta">
-                  <strong>Sapphire</strong>
-                  <span>891 EXP to Level 5</span>
-                </div>
+                <div class="level__meta"><strong>Sapphire</strong><span>891 EXP to Level 5</span></div>
               </div>
-              <div class="progress" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="Level progress">
-                <span style="--p:68%"></span>
-              </div>
+              <div class="progress" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="Level progress"><span style="--p:68%"></span></div>
               <p class="tile__hint">Combine NFTs or keep wagering to rank up.</p>
             </article>
 
@@ -333,9 +317,9 @@
             <article class="tile tile--rewards">
               <span class="eyebrow">Next rewards</span>
               <ul class="rewards">
-                <li><span class="rewards__ic rewards__ic--1" aria-hidden="true">◆</span> Weekly bonus <b>+0.05 ₿</b></li>
-                <li><span class="rewards__ic rewards__ic--2" aria-hidden="true">❖</span> Rakeback boost <b>+5%</b></li>
-                <li><span class="rewards__ic rewards__ic--3" aria-hidden="true">★</span> Free case <b>×3</b></li>
+                <li><span class="rewards__ic rewards__ic--1"><svg class="ic"><use href="#ic-gift"/></svg></span> Weekly bonus <b>+0.05 ₿</b></li>
+                <li><span class="rewards__ic rewards__ic--2"><svg class="ic"><use href="#ic-coin"/></svg></span> Rakeback boost <b>+5%</b></li>
+                <li><span class="rewards__ic rewards__ic--3"><svg class="ic"><use href="#ic-star"/></svg></span> Free case <b>×3</b></li>
               </ul>
             </article>
           </div>
@@ -345,9 +329,7 @@
           <div class="footer__pay" aria-label="Accepted crypto">
             <span class="pay">BTC</span><span class="pay">ETH</span><span class="pay">USDT</span><span class="pay">SOL</span><span class="pay">LTC</span><span class="pay">XRP</span><span class="pay">DOGE</span><span class="pay">TON</span>
           </div>
-          <div class="footer__cols">
-            <a href="#">Provably fair</a><a href="#">Responsible play</a><a href="#">Affiliates</a><a href="#">Support</a><a href="#">Terms</a><a href="#">Privacy</a>
-          </div>
+          <div class="footer__cols"><a href="#">Provably fair</a><a href="#">Responsible play</a><a href="#">Affiliates</a><a href="#">Support</a><a href="#">Terms</a><a href="#">Privacy</a></div>
           <p class="footer__legal"><span class="badge badge--age">18+</span> NodeRoll is a fictional demo interface. Play responsibly — set limits and take breaks.</p>
         </footer>
 
@@ -363,8 +345,7 @@
         <ul class="chat__list" id="chatList"><!-- JS --></ul>
         <form class="chat__input" id="chatForm" onsubmit="return false">
           <input id="chatField" placeholder="Message" aria-label="Chat message" maxlength="140" />
-          <button class="iconbtn iconbtn--tip" type="button" aria-label="Tip">⬡</button>
-          <button class="chat__send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-4 16-4-7-8-1z"/></svg></button>
+          <button class="chat__send" type="submit" aria-label="Send"><svg class="ic"><use href="#ic-send"/></svg></button>
         </form>
       </aside>
 
@@ -374,6 +355,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="assets/js/art.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

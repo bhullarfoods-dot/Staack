@@ -41,12 +41,12 @@
      In-house games strip
   ================================================================== */
   const inhouse = [
-    { n: "Mines", g: "✦" }, { n: "Crash", g: "▲" }, { n: "Dice", g: "◈" },
-    { n: "Plinko", g: "◉" }, { n: "HILO", g: "⬗" }
+    { n: "Mines", ic: "ic-diamond" }, { n: "Crash", ic: "ic-rocket" }, { n: "Dice", ic: "ic-dice" },
+    { n: "Plinko", ic: "ic-plinko" }, { n: "HILO", ic: "ic-cards" }
   ];
   const strip = $("#ingameStrip");
   inhouse.forEach((it, i) => {
-    const t = el("button", "ingame", it.g);
+    const t = el("button", "ingame", `<svg class="ic"><use href="#${it.ic}"/></svg>`);
     t.style.background = GRADS[i % GRADS.length];
     t.setAttribute("aria-label", it.n);
     t.title = it.n;
@@ -74,9 +74,11 @@
   };
   const winTrack = $("#winTrack");
   const wins = buildWins();
+  const ICON_FOR = { Crash: "ic-rocket", Mines: "ic-diamond", Dice: "ic-dice", Wheel: "ic-wheel" };
+  const gameIcon = n => ICON_FOR[n] || "ic-slots";
   const winNode = w => {
     const li = el("li", "win");
-    const ic = el("span", "win__ic", "◆"); ic.style.background = w.c;
+    const ic = el("span", "win__ic", `<svg class="ic"><use href="#${gameIcon(w.g)}"/></svg>`); ic.style.background = w.c;
     li.append(ic, el("span", "win__who", w.g + " · " + w.u), el("span", "win__amt", "+" + w.amt));
     return li;
   };
@@ -85,12 +87,10 @@
   /* =================================================================
      Game cards (rails + grids)
   ================================================================== */
-  const GLYPHS = ["◆", "▦", "❂", "⬣", "✦", "❅", "✺", "◉", "⬢", "✸", "◈", "❖"];
   const card = (g, i) => {
     const c = el("a", "gcard"); c.href = "#play";
     const art = el("div", "gcard__art");
-    art.style.background = GRADS[i % GRADS.length];
-    art.innerHTML = `<span class="gcard__glyph">${g.g}</span>`;
+    art.innerHTML = NR_ART.gameArt(g.key);
     if (g.tag) art.appendChild(el("span", "gcard__tag", g.tag));
     if (g.mult) art.appendChild(el("span", "gcard__mult", g.mult));
     art.insertAdjacentHTML("beforeend",
@@ -106,11 +106,11 @@
   const players = () => (rand(120, 3200) | 0).toLocaleString("en-US");
 
   const originals = [
-    { n: "Mines", g: "✦", mult: "x24", orig: 1 }, { n: "Crash", g: "▲", mult: "x96", orig: 1 },
-    { n: "Dice", g: "◈", mult: "x9.9", orig: 1 }, { n: "Plinko", g: "◉", mult: "x555", orig: 1 },
-    { n: "HILO", g: "⬗", mult: "x10.5", orig: 1 }, { n: "Wheel", g: "❂", mult: "x50", orig: 1 },
-    { n: "Tower", g: "⬢", mult: "x40", orig: 1 }, { n: "Keno", g: "✸", mult: "x12.5", orig: 1 },
-    { n: "Limbo", g: "⟁", mult: "x1k", orig: 1 }, { n: "Coinflip", g: "◑", mult: "x2", orig: 1 }
+    { n: "Mines", key: "mines", mult: "x24", orig: 1 }, { n: "Crash", key: "crash", mult: "x96", orig: 1 },
+    { n: "Dice", key: "dice", mult: "x9.9", orig: 1 }, { n: "Plinko", key: "plinko", mult: "x555", orig: 1 },
+    { n: "HILO", key: "hilo", mult: "x10.5", orig: 1 }, { n: "Wheel", key: "wheel", mult: "x50", orig: 1 },
+    { n: "Tower", key: "tower", mult: "x40", orig: 1 }, { n: "Keno", key: "keno", mult: "x12.5", orig: 1 },
+    { n: "Limbo", key: "limbo", mult: "x1k", orig: 1 }, { n: "Coinflip", key: "coinflip", mult: "x2", orig: 1 }
   ];
   const origRail = $("#origRail");
   originals.forEach((g, i) => { g.p = players(); origRail.appendChild(card(g, i)); });
@@ -121,7 +121,7 @@
   const fillGrid = (id, tags, off = 0) => {
     const host = $(id);
     for (let i = 0; i < 12; i++) {
-      const g = { n: slotNames[(i + off) % slotNames.length], g: pick(GLYPHS), p: players() };
+      const g = { n: slotNames[(i + off) % slotNames.length], key: NR_ART.slotKey(i + off), p: players() };
       if (tags && i % 3 === 0) g.tag = pick(tags);
       host.appendChild(card(g, i + off));
     }
@@ -129,6 +129,9 @@
   fillGrid("#topGrid", ["HOT", "TOP"]);
   fillGrid("#newGrid", ["NEW"], 4);
   fillGrid("#slotGrid", ["LIVE"], 8);
+
+  const heroArtEl = $("#heroArt");
+  if (heroArtEl && window.NR_ART) heroArtEl.innerHTML = NR_ART.heroArt();
 
   /* =================================================================
      MINES — interactive demo (provably-fair style multipliers)

@@ -199,7 +199,7 @@ ul{list-style:none;padding:0}
 .nav__item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:16px;
   letter-spacing:.05em;color:var(--ink-2);position:relative;
   transition:color var(--t-pop) var(--ease-out),background var(--t-pop) var(--ease-out),transform var(--t-press) var(--ease-out)}
-.nav__ic{width:22px;text-align:center;color:var(--ink-3);font-size:14px;transition:color var(--t-pop) var(--ease-out)}
+.nav__ic{width:22px;display:grid;place-items:center;color:var(--ink-3);transition:color var(--t-pop) var(--ease-out)}
 .nav__item:active{transform:scale(.985)}
 @media (hover:hover){.nav__item:hover{background:var(--surface);color:var(--ink)}.nav__item:hover .nav__ic{color:var(--neon-1)}}
 .nav__item.is-active{color:#fff;background:linear-gradient(100deg,rgba(68,5,228,.32),rgba(245,11,186,.12))}
@@ -230,12 +230,13 @@ ul{list-style:none;padding:0}
 .coin__buy{margin-left:-2px}
 
 .gifts{display:flex;gap:8px}
-.gift{display:flex;flex-direction:column;align-items:flex-start;line-height:1.05;padding:6px 12px;border-radius:12px;
-  background:var(--surface);border:1px solid var(--line);min-width:96px}
-.gift__ic{font-size:0;position:absolute}
-.gift b{font-size:16px;letter-spacing:.08em;color:var(--ink)}
+.gift{display:flex;align-items:center;gap:9px;padding:6px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.gift__ic{display:grid;place-items:center;color:#ffd54a}
+.gift__ic .ic{width:20px;height:20px;stroke-width:1.7}
+.gift__t{display:flex;flex-direction:column;line-height:1.05}
+.gift b{font-size:16px;letter-spacing:.06em;color:var(--ink)}
 .gift small{font-size:11px;letter-spacing:.1em;color:var(--ink-3)}
-.gift--alt b{color:var(--neon-1)}
+.gift--alt .gift__ic{color:var(--neon-1)}
 
 .onlinestat{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--ink-3);letter-spacing:.06em}
 .onlinestat b{color:var(--ink);font-size:15px}
@@ -291,25 +292,11 @@ ul{list-style:none;padding:0}
 .hero__size{position:absolute;right:10px;bottom:8px;z-index:2;font-size:11px;letter-spacing:.12em;
   color:rgba(255,255,255,.5);background:rgba(10,9,44,.4);padding:2px 8px;border-radius:99px}
 
-/* mascot art (pure CSS, no external images) */
-.hero__art{position:absolute;right:0;top:0;bottom:0;width:42%;z-index:1}
-.mascot{position:absolute;inset:0}
-.mascot__coin{position:absolute;display:grid;place-items:center;border-radius:50%;color:#1a1048;font-size:22px;
-  background:radial-gradient(circle at 32% 28%,#fff,#ffd54a 55%,#f5a300);box-shadow:0 8px 22px -6px rgba(0,0,0,.5);
-  will-change:transform;animation:bob 5s var(--ease-io) infinite alternate}
-.mascot__coin--1{width:62px;height:62px;right:48px;top:42px}
-.mascot__coin--2{width:46px;height:46px;right:120px;top:120px;animation-delay:.6s;
-  background:radial-gradient(circle at 32% 28%,#fff,#9be7ff 55%,var(--neon))}
-.mascot__coin--3{width:38px;height:38px;right:36px;bottom:38px;font-size:16px;animation-delay:1.1s;
-  background:radial-gradient(circle at 32% 28%,#fff,#ff9be9 55%,var(--pulse))}
-.mascot__die{position:absolute;right:88px;top:54px;width:78px;height:78px;border-radius:18px;
-  background:linear-gradient(150deg,#fff,#dcd8ee);box-shadow:0 16px 30px -10px rgba(0,0,0,.6);
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px;transform:rotate(-12deg);
-  will-change:transform;animation:bob 6s var(--ease-io) infinite alternate}
-.mascot__die i{background:var(--plasma);border-radius:50%;box-shadow:inset 0 -2px 3px rgba(0,0,0,.3)}
-@keyframes bob{to{transform:translateY(-12px) rotate(-12deg)}}
-.mascot__coin{animation-name:bob2}
-@keyframes bob2{to{transform:translateY(-14px)}}
+/* hero art (SVG scene, no external images) */
+.hero__art{position:absolute;right:0;top:0;bottom:0;width:46%;z-index:1}
+.hero__art .art{position:absolute;inset:0;width:100%;height:100%;will-change:transform;animation:heroFloat 6s var(--ease-io) infinite alternate}
+@keyframes heroFloat{to{transform:translateY(-10px)}}
+/* (mascot replaced by SVG hero scene) */
 
 /* side promos */
 .promo-stack{flex:1;min-width:220px;display:flex;flex-direction:column;gap:18px}
@@ -321,7 +308,8 @@ ul{list-style:none;padding:0}
 .spromo--b{background:linear-gradient(120deg,#0e2a63,#13507f)}
 .spromo h3{font-size:24px;letter-spacing:.03em;color:#fff;line-height:.96;margin:3px 0}
 .spromo p{font-size:13px;letter-spacing:.06em;color:rgba(255,255,255,.72)}
-.spromo__glyph{font-size:52px;color:rgba(255,255,255,.9);text-shadow:0 6px 20px rgba(0,0,0,.4)}
+.spromo__glyph{flex:0 0 auto;color:rgba(255,255,255,.92)}
+.spromo__glyph .ic{width:48px;height:48px;stroke-width:1.6}
 .spromo .eyebrow{color:rgba(255,255,255,.7)}
 .spromo:active{transform:scale(.99)}
 @media(hover:hover){.spromo:hover{transform:translateY(-3px);box-shadow:var(--sh-2)}}
@@ -350,8 +338,7 @@ ul{list-style:none;padding:0}
   background:var(--surface);box-shadow:var(--sh-1);display:flex;flex-direction:column;
   transition:transform var(--t-pop) var(--ease-out),box-shadow var(--t-pop) var(--ease-out)}
 .gcard__art{aspect-ratio:3/4;position:relative;display:grid;place-items:center;overflow:hidden}
-.gcard__glyph{font-size:54px;color:rgba(255,255,255,.92);filter:drop-shadow(0 10px 18px rgba(0,0,0,.45));
-  transition:transform var(--t-panel) var(--ease-out)}
+.gcard__art .art{position:absolute;inset:0;width:100%;height:100%;transition:transform var(--t-panel) var(--ease-out)}
 .gcard__art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(8,6,28,.85))}
 .gcard__tag{position:absolute;top:8px;left:8px;z-index:2;font-size:11px;letter-spacing:.1em;color:#fff;
   background:rgba(10,9,44,.5);border:1px solid var(--line-2);padding:2px 8px;border-radius:99px;backdrop-filter:blur(4px)}
@@ -370,7 +357,7 @@ ul{list-style:none;padding:0}
   .gcard:hover{transform:translateY(-5px);box-shadow:var(--sh-pop)}
   .gcard:hover .gcard__play{opacity:1}
   .gcard:hover .gcard__play span{transform:translateY(0) scale(1)}
-  .gcard:hover .gcard__glyph{transform:scale(1.08) translateY(-4px)}
+  .gcard:hover .art{transform:scale(1.06)}
 }
 
 /* ============================ mines game =========================== */
@@ -448,9 +435,9 @@ ul{list-style:none;padding:0}
 .pcard__body .eyebrow{color:rgba(255,255,255,.7)}
 .pcard h3{font-size:23px;letter-spacing:.03em;color:#fff;line-height:.98;max-width:18ch}
 .pcard p{font-size:13px;letter-spacing:.05em;color:rgba(255,255,255,.74);margin-bottom:6px;max-width:30ch}
-.pcard__art{position:absolute;top:14px;right:16px;z-index:1;display:flex;gap:8px;font-size:34px;color:rgba(255,255,255,.32)}
-.pcard__art--sports b{font-size:26px;background:rgba(255,255,255,.14);border-radius:8px;padding:4px 10px;letter-spacing:.04em}
-.pcard__art--soon{font-size:56px;color:rgba(255,255,255,.14)}
+.pcard__art{position:absolute;top:18px;right:18px;z-index:1;color:rgba(255,255,255,.32)}
+.pcard__art .ic{width:46px;height:46px;stroke-width:1.5}
+.pcard--soon .pcard__art{color:rgba(255,255,255,.16)}
 .pcard--soon .pcard__body{opacity:.92}
 @media(hover:hover){.pcard:not(.pcard--soon):hover{transform:translateY(-4px);box-shadow:var(--sh-pop)}}
 
@@ -579,11 +566,19 @@ ul{list-style:none;padding:0}
   pointer-events:none;transition:opacity var(--t-panel) var(--ease-out)}
 .app.nav-open .nav-scrim{opacity:1;pointer-events:auto}
 
+/* ------------------------- icons + polish ------------------------- */
+.ic{width:18px;height:18px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav__ic .ic{width:19px;height:19px}
+.ingame .ic{width:22px;height:22px;color:#fff}
+.rewards__ic .ic{width:18px;height:18px}
+.btn .ic{margin-right:-2px}
+.btn,.iconbtn,.cell,.gcard,.nav__item,.seg__btn,.field__chip,.spromo,.pcard,.balance__add,.chat__send,.avatar,.ingame{touch-action:manipulation}
+
 /* ===================== reduced motion (required) =================== */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;
     transition-duration:.08ms !important}
   .ticker__track{animation:none;transform:none}
   .blob{animation:none}
-  .mascot__coin,.mascot__die{animation:none}
+  .hero__art .art{animation:none}
 }
