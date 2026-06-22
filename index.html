@@ -107,6 +107,7 @@
 
     <header class="topbar">
       <button class="iconbtn topbar__menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false"><svg class="ic"><use href="#ic-menu"/></svg></button>
+      <button class="iconbtn topbar__collapse" id="sidebarToggle" aria-label="Collapse sidebar" aria-expanded="true"><svg class="ic"><use href="#ic-chevL"/></svg></button>
 
       <div class="coin">
         <span class="coin__mark" aria-hidden="true"></span>
@@ -318,11 +319,49 @@
         </section>
 
         <footer class="footer">
-          <div class="footer__pay" aria-label="Accepted crypto">
-            <span class="pay">BTC</span><span class="pay">ETH</span><span class="pay">USDT</span><span class="pay">SOL</span><span class="pay">LTC</span><span class="pay">XRP</span><span class="pay">DOGE</span><span class="pay">TON</span>
+          <div class="footer__top">
+            <div class="footer__brand">
+              <span class="logo footer__logo">NodeRoll</span>
+              <p class="footer__desc">NodeRoll is a crypto-native casino &amp; sportsbook — provably-fair originals, thousands of slots and live tables, with instant on-chain deposits and withdrawals. Your keys, your coins, your game.</p>
+              <div class="footer__pay" aria-label="Accepted crypto">
+                <span class="pay" data-coin="btc">BTC</span>
+                <span class="pay" data-coin="eth">ETH</span>
+                <span class="pay" data-coin="usdt">USDT</span>
+                <span class="pay" data-coin="sol">SOL</span>
+                <span class="pay" data-coin="ltc">LTC</span>
+                <span class="pay" data-coin="xrp">XRP</span>
+                <span class="pay" data-coin="doge">DOGE</span>
+                <span class="pay" data-coin="ton">TON</span>
+              </div>
+            </div>
+            <nav class="footer__nav" aria-label="Footer">
+              <div class="footer__col">
+                <h4 class="footer__h">Casino</h4>
+                <a href="#originals">Originals</a><a href="#slots">Slots</a><a href="#slots">Live Casino</a><a href="#originals">Crash Games</a>
+              </div>
+              <div class="footer__col">
+                <h4 class="footer__h">Sportsbook</h4>
+                <a href="#">Live betting</a><a href="#">Esports</a><a href="#">Promotions</a><a href="#">Odds boosts</a>
+              </div>
+              <div class="footer__col">
+                <h4 class="footer__h">Support</h4>
+                <a href="#">Help center</a><a href="#">Live chat</a><a href="#">Affiliates</a><a href="#">VIP club</a>
+              </div>
+              <div class="footer__col">
+                <h4 class="footer__h">Company</h4>
+                <a href="#">About us</a><a href="#">Careers</a><a href="#">Blog</a><a href="#">Press</a>
+              </div>
+              <div class="footer__col">
+                <h4 class="footer__h">Legal</h4>
+                <a href="#">Terms of Service</a><a href="#">Privacy Policy</a><a href="#">AML &amp; KYC</a><a href="#">Responsible Gaming</a><a href="#">Provably Fair</a>
+              </div>
+            </nav>
           </div>
-          <div class="footer__cols"><a href="#">Provably fair</a><a href="#">Responsible play</a><a href="#">Affiliates</a><a href="#">Support</a><a href="#">Terms</a><a href="#">Privacy</a></div>
-          <p class="footer__legal"><span class="badge badge--age">18+</span> NodeRoll is a fictional demo interface. Play responsibly — set limits and take breaks.</p>
+          <div class="footer__bar">
+            <p class="footer__legal"><span class="badge badge--age">18+</span> Gambling can be addictive — play responsibly. Set deposit limits, take breaks, and never wager more than you can afford to lose.</p>
+            <p class="footer__license">NodeRoll is operated under licence #8048/JAZ issued by the Government of Curaçao (demo). This is a fictional, non-commercial demo interface — no real funds are wagered and no real money is involved.</p>
+            <p class="footer__copy">© 2026 NodeRoll. All rights reserved.</p>
+          </div>
         </footer>
 
       </main>

@@ -21,9 +21,11 @@
     "linear-gradient(150deg,#4405e4,#13aded)",
     "linear-gradient(150deg,#2a0b6b,#f50bba)"
   ];
-  const AV_GRADS = ["#4405e4,#13aded","#f50bba,#5a1bff","#13aded,#36e0a0","#7a1366,#f50bba","#5a14b8,#13507f","#f5a300,#f50bba"];
-  const avatar = seed => `background:linear-gradient(135deg,${AV_GRADS[seed % AV_GRADS.length]})`;
-  const initials = n => n.replace(/[@_]/g, "").slice(0, 2).toUpperCase();
+  const AV_GRADS = ["#4405e4,#13aded","#f50bba,#5a1bff","#13aded,#36e0a0","#7a1366,#f50bba","#5a14b8,#13507f","#f5a300,#f50bba","#4405e4,#f50bba","#125a7a,#36e0a0"];
+  const AV_GLYPHS = ["ic-dice","ic-diamond","ic-spade","ic-rocket","ic-coin","ic-wheel","ic-crown","ic-ball","ic-cards","ic-flame","ic-star","ic-hexagon"];
+  const hashStr = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h; };
+  // deterministic, on-theme avatar (casino/crypto glyph on a brand gradient), stable per username
+  const avatarFor = u => { const h = hashStr(String(u)); return { grad: AV_GRADS[h % AV_GRADS.length], glyph: AV_GLYPHS[(h >>> 4) % AV_GLYPHS.length] }; };
   const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
   /* =================================================================
@@ -341,7 +343,9 @@
   ];
   const msgNode = (msg, seedN) => {
     const li = el("li", "msg chat__enter" + (msg.me ? " msg--me" : "") + (msg.win ? " msg--win" : ""));
-    const av = el("span", "msg__av", initials(msg.u)); av.style.cssText = avatar(seedN);
+    const a = avatarFor(msg.u);
+    const av = el("span", "msg__av", `<svg class="ic" aria-hidden="true"><use href="#${a.glyph}"/></svg>`);
+    av.style.background = `linear-gradient(135deg,${a.grad})`;
     const body = el("div", "msg__b");
     const time = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
     body.innerHTML =
@@ -394,6 +398,15 @@
   });
   scrim.addEventListener("click", () => app.classList.remove("nav-open"));
   $$(".nav__item").forEach(a => a.addEventListener("click", () => { if (isMobileNav()) app.classList.remove("nav-open"); }));
+
+  // desktop: retract / expand the sidebar (smooth grid-column transition)
+  const sidebarToggle = $("#sidebarToggle");
+  if (sidebarToggle) sidebarToggle.addEventListener("click", () => {
+    const collapsed = app.classList.toggle("sidebar-collapsed");
+    sidebarToggle.setAttribute("aria-expanded", String(!collapsed));
+    sidebarToggle.setAttribute("aria-label", collapsed ? "Expand sidebar" : "Collapse sidebar");
+    sidebarToggle.querySelector("use").setAttribute("href", collapsed ? "#ic-chevR" : "#ic-chevL");
+  });
 
   const chatToggle = $("#chatToggle");
   chatToggle.addEventListener("click", () => {
