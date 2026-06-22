@@ -24,6 +24,7 @@
   const AV_GRADS = ["#4405e4,#13aded","#f50bba,#5a1bff","#13aded,#36e0a0","#7a1366,#f50bba","#5a14b8,#13507f","#f5a300,#f50bba"];
   const avatar = seed => `background:linear-gradient(135deg,${AV_GRADS[seed % AV_GRADS.length]})`;
   const initials = n => n.replace(/[@_]/g, "").slice(0, 2).toUpperCase();
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
   /* =================================================================
      Toast
@@ -41,13 +42,15 @@
      In-house games strip
   ================================================================== */
   const inhouse = [
-    { n: "Mines", ic: "ic-diamond" }, { n: "Crash", ic: "ic-rocket" }, { n: "Dice", ic: "ic-dice" },
-    { n: "Plinko", ic: "ic-plinko" }, { n: "HILO", ic: "ic-cards" }
+    { n: "Mines", key: "mines", ic: "ic-diamond" }, { n: "Crash", key: "crash", ic: "ic-rocket" },
+    { n: "Dice", key: "dice", ic: "ic-dice" }, { n: "Plinko", key: "plinko", ic: "ic-plinko" },
+    { n: "HILO", key: "hilo", ic: "ic-cards" }
   ];
   const strip = $("#ingameStrip");
   inhouse.forEach((it, i) => {
     const t = el("button", "ingame", `<svg class="ic"><use href="#${it.ic}"/></svg>`);
     t.style.background = GRADS[i % GRADS.length];
+    t.dataset.key = it.key;
     t.setAttribute("aria-label", it.n);
     t.title = it.n;
     t.addEventListener("click", () => $("#play").scrollIntoView({ behavior: "smooth", block: "start" }));
@@ -89,8 +92,9 @@
   ================================================================== */
   const card = (g, i) => {
     const c = el("a", "gcard"); c.href = "#play";
+    c.dataset.imgkey = g.img || g.key; c.dataset.name = g.n;
     const art = el("div", "gcard__art");
-    art.innerHTML = NR_ART.gameArt(g.key);
+    art.innerHTML = NR_ART.gameArt(g.art || g.key);
     if (g.tag) art.appendChild(el("span", "gcard__tag", g.tag));
     if (g.mult) art.appendChild(el("span", "gcard__mult", g.mult));
     art.insertAdjacentHTML("beforeend",
@@ -121,7 +125,8 @@
   const fillGrid = (id, tags, off = 0) => {
     const host = $(id);
     for (let i = 0; i < 12; i++) {
-      const g = { n: slotNames[(i + off) % slotNames.length], key: NR_ART.slotKey(i + off), p: players() };
+      const nm = slotNames[(i + off) % slotNames.length];
+      const g = { n: nm, art: NR_ART.slotKey(i + off), img: slug(nm), p: players() };
       if (tags && i % 3 === 0) g.tag = pick(tags);
       host.appendChild(card(g, i + off));
     }
@@ -132,6 +137,68 @@
 
   const heroArtEl = $("#heroArt");
   if (heroArtEl && window.NR_ART) heroArtEl.innerHTML = NR_ART.heroArt();
+
+  // ---- Optional uploaded raster assets via assets/img/manifest.json ----
+  // Paths in the manifest are relative to assets/img/. Missing entries keep the
+  // built-in SVG art, so the page never shows a broken image.
+  const HERO_ALTS = [
+    "Bigger bets, bigger wins. Join and win.",
+    "Real wins, real fast. Spin today.",
+    "Your jackpot awaits tonight. Claim bonus.",
+    "Spin. Win. Repeat. Play now."
+  ];
+  const buildHeroCarousel = list => {
+    const hero = $("#hero"); if (!hero || !Array.isArray(list) || !list.length) return;
+    const loaded = new Array(list.length).fill(null);
+    let pending = list.length;
+    const done = () => { if (--pending) return; render(loaded.filter(Boolean)); };
+    list.forEach((f, i) => { const im = new Image(); im.onload = () => { loaded[i] = f; done(); }; im.onerror = done; im.src = "assets/img/" + f; });
+    function render(files) {
+      if (!files.length) return;                    // none loaded -> keep SVG hero
+      const car = el("div", "hero__carousel"); car.setAttribute("aria-label", "Promotions");
+      const dots = el("div", "hero__dots");
+      let idx = 0, timer = null;
+      const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+      files.forEach((f, i) => {
+        const a = el("a", "hero__slide" + (i ? "" : " is-active")); a.href = "#";
+        const img = el("img"); img.src = "assets/img/" + f; img.alt = HERO_ALTS[i] || "Promotion";
+        img.width = 570; img.height = 265; img.loading = i ? "lazy" : "eager";
+        a.appendChild(img); car.appendChild(a);
+        const d = el("button", "hero__dot" + (i ? "" : " is-active")); d.type = "button";
+        d.setAttribute("aria-label", "Banner " + (i + 1));
+        d.addEventListener("click", () => { go(i); play(); });
+        dots.appendChild(d);
+      });
+      hero.append(car, dots); hero.classList.add("hero--images");
+      const S = [...car.children], D = [...dots.children];
+      function go(i) { idx = (i + S.length) % S.length; S.forEach((s, k) => s.classList.toggle("is-active", k === idx)); D.forEach((d, k) => d.classList.toggle("is-active", k === idx)); }
+      function play() { if (reduce || S.length < 2) return; stop(); timer = setInterval(() => go(idx + 1), 5000); }
+      function stop() { if (timer) clearInterval(timer); }
+      hero.addEventListener("mouseenter", stop);
+      hero.addEventListener("mouseleave", play);
+      document.addEventListener("visibilitychange", () => document.hidden ? stop() : play());
+      play();
+    }
+  };
+  const upgradeCardArt = (cardEl, file, alt) => {
+    const im = el("img", "art"); im.alt = alt || ""; im.width = 300; im.height = 400; im.loading = "lazy";
+    im.onload = () => { const cur = cardEl.querySelector(".gcard__art .art"); if (cur) cur.replaceWith(im); };
+    im.src = "assets/img/" + file;          // swaps over the SVG only once it actually loads
+  };
+  const upgradeIcon = (btn, file, alt) => {
+    const im = el("img", "ingame__img"); im.alt = alt || ""; im.width = 48; im.height = 48; im.loading = "lazy";
+    im.onload = () => { btn.innerHTML = ""; btn.appendChild(im); btn.style.background = "none"; };
+    im.src = "assets/img/" + file;
+  };
+  fetch("assets/img/manifest.json", { cache: "no-cache" })
+    .then(r => r.ok ? r.json() : null)
+    .then(m => {
+      if (!m) return;
+      if (m.hero) buildHeroCarousel(m.hero);
+      if (m.games) $$(".gcard[data-imgkey]").forEach(c => { const f = m.games[c.dataset.imgkey]; if (f) upgradeCardArt(c, f, c.dataset.name); });
+      if (m.icons) $$(".ingame[data-key]").forEach(t => { const f = m.icons[t.dataset.key]; if (f) upgradeIcon(t, f, t.title); });
+    })
+    .catch(() => {});
 
   /* =================================================================
      MINES — interactive demo (provably-fair style multipliers)
