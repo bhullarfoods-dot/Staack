@@ -34,5 +34,8 @@
     "toxic-reels": "games/6.avif"
   },
   "icons": {},
-  "promos": {}
+  "promos": {
+    "race": "promos/3.png",
+    "refer": "promos/4.png"
+  }
 }
