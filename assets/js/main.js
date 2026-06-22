@@ -197,6 +197,12 @@
       if (m.hero) buildHeroCarousel(m.hero);
       if (m.games) $$(".gcard[data-imgkey]").forEach(c => { const f = m.games[c.dataset.imgkey]; if (f) upgradeCardArt(c, f, c.dataset.name); });
       if (m.icons) $$(".ingame[data-key]").forEach(t => { const f = m.icons[t.dataset.key]; if (f) upgradeIcon(t, f, t.title); });
+      if (m.promos) $$(".spromo[data-promo]").forEach(s => {
+        const f = m.promos[s.dataset.promo]; if (!f) return;
+        const im = el("img", "spromo__img"); im.alt = ""; im.loading = "lazy";
+        im.onload = () => s.appendChild(im);
+        im.src = "assets/img/" + f;
+      });
     })
     .catch(() => {});
 
