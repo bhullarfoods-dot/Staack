@@ -162,7 +162,7 @@
       files.forEach((f, i) => {
         const a = el("a", "hero__slide" + (i ? "" : " is-active")); a.href = "#";
         const img = el("img"); img.src = "assets/img/" + f; img.alt = HERO_ALTS[i] || "Promotion";
-        img.width = 570; img.height = 265; img.loading = i ? "lazy" : "eager";
+        img.width = 1520; img.height = 704; img.loading = i ? "lazy" : "eager";
         a.appendChild(img); car.appendChild(a);
         const d = el("button", "hero__dot" + (i ? "" : " is-active")); d.type = "button";
         d.setAttribute("aria-label", "Banner " + (i + 1));
