@@ -26,6 +26,18 @@
   const hashStr = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h; };
   // deterministic, on-theme avatar (casino/crypto glyph on a brand gradient), stable per username
   const avatarFor = u => { const h = hashStr(String(u)); return { grad: AV_GRADS[h % AV_GRADS.length], glyph: AV_GLYPHS[(h >>> 4) % AV_GLYPHS.length] }; };
+  let CHAT_AVATARS = null;   // populated from manifest; uploaded avatar images take over the glyphs
+  const applyAvatar = (av, user) => {
+    if (CHAT_AVATARS && CHAT_AVATARS.length) {
+      const im = el("img", "msg__avimg"); im.alt = ""; im.loading = "eager";
+      im.onload = () => { av.innerHTML = ""; av.style.background = "none"; av.appendChild(im); };
+      im.src = "assets/img/" + CHAT_AVATARS[hashStr(String(user)) % CHAT_AVATARS.length];
+    } else {
+      const a = avatarFor(user);
+      av.innerHTML = `<svg class="ic" aria-hidden="true"><use href="#${a.glyph}"/></svg>`;
+      av.style.background = `linear-gradient(135deg,${a.grad})`;
+    }
+  };
   const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
   /* =================================================================
@@ -95,13 +107,13 @@
   const card = (g, i) => {
     const c = el("a", "gcard"); c.href = "#play";
     c.dataset.imgkey = g.img || g.key; c.dataset.name = g.n;
+    if (g.orig) c.dataset.section = "originals";   // originals use their own image set
     const art = el("div", "gcard__art");
     art.innerHTML = NR_ART.gameArt(g.art || g.key);
     if (g.tag) art.appendChild(el("span", "gcard__tag", g.tag));
     if (g.mult) art.appendChild(el("span", "gcard__mult", g.mult));
     art.insertAdjacentHTML("beforeend",
-      `<div class="gcard__foot"><span class="gcard__name">${g.n}</span>
-       <span class="gcard__meta"><span class="dot dot--live"></span>${g.p} playing</span></div>
+      `<div class="gcard__foot"><span class="gcard__meta"><span class="dot dot--live"></span>${g.p} playing</span></div>
        <div class="gcard__play"><span>Play</span></div>`);
     c.appendChild(art);
     c.addEventListener("click", e => {
@@ -248,17 +260,37 @@
     if (!table) return;
     $$(sel).forEach(h => { const k = h.dataset[attr], f = table[k]; if (!f) return; IMG_ICONS.has(k) ? imgIcon(h, f, "ui__img") : inlineIcon(h, f); });
   };
+  // replace a host's contents entirely with an uploaded image (clears bg/glyph)
+  const imgFill = (host, file, cls) => {
+    const im = el("img", cls); im.alt = ""; im.loading = "eager";
+    im.onload = () => { host.textContent = ""; host.style.background = "none"; host.appendChild(im); };
+    im.src = "assets/img/" + file;
+  };
+  const wireFill = (sel, table, attr, cls) => {
+    if (!table) return;
+    $$(sel).forEach(h => { const f = table[h.dataset[attr]]; if (f) imgFill(h, f, cls); });
+  };
   fetch("assets/img/manifest.json", { cache: "no-cache" })
     .then(r => r.ok ? r.json() : null)
     .then(m => {
       if (!m) return;
       upgradeHero(m);
-      if (m.games) $$(".gcard[data-imgkey]").forEach(c => { const f = m.games[c.dataset.imgkey]; if (f) upgradeCardArt(c, f, c.dataset.name); });
+      $$(".gcard[data-imgkey]").forEach(c => {
+        const t = c.dataset.section === "originals" ? m.originals : m.games;
+        const f = t && t[c.dataset.imgkey]; if (f) upgradeCardArt(c, f, c.dataset.name);
+      });
       if (m.icons) $$(".ingame[data-key]").forEach(t => { const f = m.icons[t.dataset.key]; if (f) upgradeIcon(t, f, t.title); });
       wireIcons(".nav__item[data-nav]", m.sidebar, "nav");
       wireIcons("[data-topnav]", m.topnav, "topnav");
       wireIcons("[data-ui]", m.ui, "ui");
       if (m.features) $$("[data-feature]").forEach(h => { const f = m.features[h.dataset.feature]; if (f) imgIcon(h, f, "pcard__img"); });
+      wireFill("[data-reward]", m.rewards, "reward", "rw__img");
+      wireFill("[data-stat]", m.stats, "stat", "tile__icimg");
+      wireFill("[data-level]", m.level, "level", "level__img");
+      if (Array.isArray(m.avatars) && m.avatars.length) {
+        CHAT_AVATARS = m.avatars;
+        $$(".msg__av[data-user]").forEach(av => applyAvatar(av, av.dataset.user));
+      }
       if (m.crypto) $$(".pay[data-coin]").forEach(p => {
         const f = m.crypto[p.dataset.coin]; if (!f) return;
         const im = el("img", "pay__img"); im.alt = p.textContent.trim(); im.loading = "eager";
@@ -414,9 +446,8 @@
   ];
   const msgNode = (msg, seedN) => {
     const li = el("li", "msg chat__enter" + (msg.me ? " msg--me" : "") + (msg.win ? " msg--win" : ""));
-    const a = avatarFor(msg.u);
-    const av = el("span", "msg__av", `<svg class="ic" aria-hidden="true"><use href="#${a.glyph}"/></svg>`);
-    av.style.background = `linear-gradient(135deg,${a.grad})`;
+    const av = el("span", "msg__av"); av.dataset.user = msg.u;
+    applyAvatar(av, msg.u);
     const body = el("div", "msg__b");
     const time = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
     body.innerHTML =

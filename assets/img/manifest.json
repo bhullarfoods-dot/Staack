@@ -104,5 +104,10 @@
     "casino": "features/04.png",
     "sports": "features/05.png",
     "futures": "features/06.png"
-  }
+  },
+  "originals": {},
+  "rewards": {},
+  "stats": {},
+  "level": {},
+  "avatars": []
 }

@@ -137,8 +137,6 @@
 
       <a class="btn btn--ghost btn--sm hide-sm" href="#">Log in</a>
       <a class="btn btn--primary btn--sm" href="#">Sign up</a>
-
-      <button class="avatar" aria-label="Account"><span class="avatar__face">VX</span></button>
     </header>
 
     <div class="content-grid" id="contentGrid">
@@ -282,24 +280,25 @@
           <div class="bento">
             <article class="tile tile--level">
               <span class="eyebrow">Current level</span>
+              <span class="level__char" data-level="character" aria-hidden="true"></span>
               <div class="level">
-                <span class="level__badge" aria-hidden="true">04</span>
+                <span class="level__badge" data-level="badge" aria-hidden="true">04</span>
                 <div class="level__meta"><strong>Sapphire</strong><span>891 EXP to Level 5</span></div>
               </div>
               <div class="progress" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="Level progress"><span style="--p:68%"></span></div>
               <p class="tile__hint">Combine NFTs or keep wagering to rank up.</p>
             </article>
 
-            <article class="tile tile--stat"><span class="eyebrow">Total wagered</span><strong id="statWager">304,345</strong><span class="tile__sub">NODE</span></article>
-            <article class="tile tile--stat"><span class="eyebrow">Total wins</span><strong>9,839</strong><span class="tile__sub">payouts</span></article>
-            <article class="tile tile--stat"><span class="eyebrow">Rains &amp; drops</span><strong>10,943</strong><span class="tile__sub">claimed</span></article>
+            <article class="tile tile--stat"><span class="tile__ic" data-stat="wagered" aria-hidden="true"></span><span class="eyebrow">Total wagered</span><strong id="statWager">304,345</strong><span class="tile__sub">NODE</span></article>
+            <article class="tile tile--stat"><span class="tile__ic" data-stat="wins" aria-hidden="true"></span><span class="eyebrow">Total wins</span><strong>9,839</strong><span class="tile__sub">payouts</span></article>
+            <article class="tile tile--stat"><span class="tile__ic" data-stat="drops" aria-hidden="true"></span><span class="eyebrow">Rains &amp; drops</span><strong>10,943</strong><span class="tile__sub">claimed</span></article>
 
             <article class="tile tile--rewards">
               <span class="eyebrow">Next rewards</span>
               <ul class="rewards">
-                <li><span class="rewards__ic rewards__ic--1"><svg class="ic"><use href="#ic-gift"/></svg></span> Weekly bonus <b>+0.05 ₿</b></li>
-                <li><span class="rewards__ic rewards__ic--2"><svg class="ic"><use href="#ic-coin"/></svg></span> Rakeback boost <b>+5%</b></li>
-                <li><span class="rewards__ic rewards__ic--3"><svg class="ic"><use href="#ic-star"/></svg></span> Free case <b>×3</b></li>
+                <li><span class="rewards__ic rewards__ic--1" data-reward="weekly-bonus"><svg class="ic"><use href="#ic-gift"/></svg></span> Weekly bonus <b>+0.05 ₿</b></li>
+                <li><span class="rewards__ic rewards__ic--2" data-reward="rakeback-boost"><svg class="ic"><use href="#ic-coin"/></svg></span> Rakeback boost <b>+5%</b></li>
+                <li><span class="rewards__ic rewards__ic--3" data-reward="free-case"><svg class="ic"><use href="#ic-star"/></svg></span> Free case <b>×3</b></li>
               </ul>
             </article>
           </div>
