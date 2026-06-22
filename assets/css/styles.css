@@ -110,15 +110,7 @@ ul{list-style:none;padding:0}
   padding:10px 16px;border-radius:var(--r-sm);transition:top var(--t-pop) var(--ease-out)}
 .skip-link:focus{top:12px}
 
-/* --------------------------- backdrop FX -------------------------- */
-.backdrop{position:fixed;inset:0;z-index:var(--z-backdrop);pointer-events:none;overflow:hidden;
-  background:radial-gradient(120% 80% at 50% -10%,#120f3a 0%,var(--bg) 60%)}
-.blob{position:absolute;width:46vw;height:46vw;border-radius:50%;filter:blur(90px);opacity:.42;
-  will-change:transform;animation:float 22s var(--ease-io) infinite alternate}
-.blob--plasma{background:var(--plasma);top:-12vw;left:-6vw}
-.blob--pulse{background:var(--pulse);bottom:-16vw;right:6vw;opacity:.30;animation-duration:26s}
-.blob--neon{background:var(--neon);top:30vh;right:24vw;opacity:.22;animation-duration:30s}
-@keyframes float{to{transform:translate3d(4vw,3vw,0) scale(1.12)}}
+/* solid background: base colour is var(--bg) on <body>; no gradient backdrop */
 
 /* ============================= primitives ============================ */
 .eyebrow{display:inline-block;font-size:12px;letter-spacing:.16em;color:var(--ink-3);line-height:1}
@@ -169,8 +161,7 @@ ul{list-style:none;padding:0}
 .app{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:100dvh;position:relative;z-index:var(--z-base)}
 
 /* ============================== sidebar ============================= */
-.sidebar{border-right:1px solid var(--line);background:linear-gradient(180deg,rgba(20,18,53,.6),rgba(10,9,44,.6));
-  backdrop-filter:blur(8px)}
+.sidebar{border-right:1px solid var(--line);background:var(--bg-2)}
 .sidebar__inner{position:sticky;top:0;height:100dvh;overflow-y:auto;overscroll-behavior:contain;
   padding:18px 14px 16px;display:flex;flex-direction:column;gap:16px}
 
@@ -217,7 +208,7 @@ ul{list-style:none;padding:0}
 .main-region{display:flex;flex-direction:column;min-width:0}
 .topbar{position:sticky;top:0;z-index:var(--z-sticky);height:var(--topbar-h);
   display:flex;align-items:center;gap:10px;padding:0 16px;
-  background:rgba(10,9,44,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  background:var(--bg);border-bottom:1px solid var(--line)}
 .topbar__menu{display:none}
 .topbar__spacer{flex:1}
 
@@ -480,8 +471,7 @@ ul{list-style:none;padding:0}
 
 /* =============================== chat ============================== */
 .chat{position:sticky;top:var(--topbar-h);height:calc(100dvh - var(--topbar-h));z-index:var(--z-chat);
-  border-left:1px solid var(--line);background:linear-gradient(180deg,rgba(20,18,53,.5),rgba(10,9,44,.65));
-  backdrop-filter:blur(8px);display:flex;flex-direction:column;overflow:hidden}
+  border-left:1px solid var(--line);background:var(--bg-2);display:flex;flex-direction:column;overflow:hidden}
 .content-grid.chat-collapsed .chat{transform:translateX(100%);opacity:0;pointer-events:none;
   transition:transform var(--t-panel) var(--ease-out),opacity var(--t-panel) var(--ease-out)}
 .chat__head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
@@ -579,6 +569,5 @@ ul{list-style:none;padding:0}
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;
     transition-duration:.08ms !important}
   .ticker__track{animation:none;transform:none}
-  .blob{animation:none}
   .hero__art .art{animation:none}
 }
