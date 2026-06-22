@@ -287,7 +287,6 @@ ul{list-style:none;padding:0}
 .hero--images .hero__carousel{display:block}
 .hero--images{width:100%;flex:1 1 100%;height:auto;aspect-ratio:1520/704;padding:0;background:transparent;border:0;box-shadow:none}
 .hero--images .hero__body,.hero--images .hero__art,.hero--images .hero__glow,.hero--images .hero__size{display:none}
-.hero--images ~ .promo-stack{display:none}
 .hero__slide{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--ease-out);pointer-events:none}
 .hero__slide.is-active{opacity:1;pointer-events:auto}
 .hero__slide img{width:100%;height:100%;object-fit:cover;display:block}
@@ -307,7 +306,7 @@ ul{list-style:none;padding:0}
 /* (mascot replaced by SVG hero scene) */
 
 /* side promos */
-.promo-stack{flex:1;min-width:220px;display:flex;flex-direction:column;gap:18px}
+.promo-row{display:flex;gap:18px;margin-top:18px}
 .spromo{flex:1;display:flex;align-items:center;justify-content:space-between;gap:12px;
   border-radius:var(--r-lg);padding:20px 22px;overflow:hidden;position:relative;
   border:1px solid var(--line-2);box-shadow:var(--sh-1);
@@ -536,7 +535,7 @@ ul{list-style:none;padding:0}
 @media (max-width:1180px){
   .hero{width:100%;flex-basis:100%;height:auto;aspect-ratio:570/265}
   .hero--images{aspect-ratio:1520/704}
-  .promo-stack{flex-basis:100%}
+  .promo-row{flex-wrap:wrap}
 }
 @media (max-width:1080px){
   :root{--chat-w:0px}
