@@ -137,50 +137,82 @@
   fillGrid("#newGrid", ["NEW"], 4);
   fillGrid("#slotGrid", ["LIVE"], 8);
 
-  const heroArtEl = $("#heroArt");
-  if (heroArtEl && window.NR_ART) heroArtEl.innerHTML = NR_ART.heroArt();
-
-  // ---- Optional uploaded raster assets via assets/img/manifest.json ----
-  // Paths in the manifest are relative to assets/img/. Missing entries keep the
-  // built-in SVG art, so the page never shows a broken image.
-  const HERO_ALTS = [
-    "Bigger bets, bigger wins. Join and win.",
-    "Real wins, real fast. Spin today.",
-    "Your jackpot awaits tonight. Claim bonus.",
-    "Spin. Win. Repeat. Play now."
+  // ---- HERO: layered peek-carousel (gradient placeholder bg -> uploaded art) ----
+  // Each slide shares one layout; copy is unique per slide. Background + character
+  // images (if uploaded) upgrade over the gradient/placeholder via the manifest.
+  const HERO_SLIDES = [
+    { eyebrow: "Welcome package", badges: ["Provably fair"], title: "BIGGER BETS,<br>BIGGER WINS",
+      sub: "Deposit and get up to 1000 free spins + $3,500.", cta: "Join &amp; win", cta2: "How it works",
+      to: "#originals", grad: "linear-gradient(115deg,#2a0b6b 0%,#4405e4 55%,#13aded 120%)" },
+    { eyebrow: "Instant payouts", badges: ["On-chain"], title: "REAL WINS,<br>REAL FAST",
+      sub: "Withdraw straight to your wallet — no waiting, no limits.", cta: "Spin today",
+      to: "#play", grad: "linear-gradient(115deg,#3a0f7a 0%,#7a1366 50%,#f50bba 120%)" },
+    { eyebrow: "Tonight only", badges: ["Daily case", "Rakeback"], title: "YOUR JACKPOT<br>AWAITS TONIGHT",
+      sub: "Open daily cases, climb the weekly race and claim rakeback.", cta: "Claim bonus",
+      to: "#promos", grad: "linear-gradient(115deg,#0e2a63 0%,#125a7a 55%,#13aded 120%)" },
+    { eyebrow: "NodeRoll Originals", badges: ["1% house edge"], title: "SPIN. WIN.<br>REPEAT.",
+      sub: "Mines, Crash, Plinko, Dice and more — provably fair.", cta: "Play now",
+      to: "#originals", grad: "linear-gradient(115deg,#4a0f8f 0%,#7a1366 55%,#f50bba 120%)" }
   ];
-  const buildHeroCarousel = list => {
-    const hero = $("#hero"); if (!hero || !Array.isArray(list) || !list.length) return;
-    const loaded = new Array(list.length).fill(null);
-    let pending = list.length;
-    const done = () => { if (--pending) return; render(loaded.filter(Boolean)); };
-    list.forEach((f, i) => { const im = new Image(); im.onload = () => { loaded[i] = f; done(); }; im.onerror = done; im.src = "assets/img/" + f; });
-    function render(files) {
-      if (!files.length) return;                    // none loaded -> keep SVG hero
-      const car = el("div", "hero__carousel"); car.setAttribute("aria-label", "Promotions");
-      const dots = el("div", "hero__dots");
-      let idx = 0, timer = null;
-      const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-      files.forEach((f, i) => {
-        const a = el("a", "hero__slide" + (i ? "" : " is-active")); a.href = "#";
-        const img = el("img"); img.src = "assets/img/" + f; img.alt = HERO_ALTS[i] || "Promotion";
-        img.width = 1520; img.height = 704; img.loading = i ? "lazy" : "eager";
-        a.appendChild(img); car.appendChild(a);
-        const d = el("button", "hero__dot" + (i ? "" : " is-active")); d.type = "button";
-        d.setAttribute("aria-label", "Banner " + (i + 1));
-        d.addEventListener("click", () => { go(i); play(); });
-        dots.appendChild(d);
-      });
-      hero.append(car, dots); hero.classList.add("hero--images");
-      const S = [...car.children], D = [...dots.children];
-      function go(i) { idx = (i + S.length) % S.length; S.forEach((s, k) => s.classList.toggle("is-active", k === idx)); D.forEach((d, k) => d.classList.toggle("is-active", k === idx)); }
-      function play() { if (reduce || S.length < 2) return; stop(); timer = setInterval(() => go(idx + 1), 5000); }
-      function stop() { if (timer) clearInterval(timer); }
-      hero.addEventListener("mouseenter", stop);
-      hero.addEventListener("mouseleave", play);
-      document.addEventListener("visibilitychange", () => document.hidden ? stop() : play());
-      play();
-    }
+  const buildHero = () => {
+    const track = $("#heroTrack"), dotsHost = $("#heroDots");
+    if (!track) return null;
+    const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+    const slides = HERO_SLIDES.map((s, i) => {
+      const slide = el("article", "hslide"); slide.dataset.slide = i;
+      const bg = el("div", "hslide__bg"); bg.style.background = s.grad;
+      const extra = (s.badges || []).map(b => `<span class="hbadge">${b}</span>`).join("");
+      const ctas = `<a class="btn btn--primary" href="${s.to}" data-to="${s.to}">${s.cta}</a>` +
+        (s.cta2 ? `<a class="btn btn--quiet" href="${s.to}" data-to="${s.to}">${s.cta2}</a>` : "");
+      const content = el("div", "hslide__content",
+        `<div class="hslide__badges"><span class="hbadge hbadge--hot">${s.eyebrow}</span>${extra}</div>
+         <h2 class="hslide__title">${s.title}</h2>
+         <p class="hslide__sub">${s.sub}</p>
+         <div class="hslide__cta">${ctas}</div>`);
+      slide.append(bg, el("div", "hslide__scrim"), content);
+      track.appendChild(slide);
+      const dot = el("button", "hero__dot" + (i ? "" : " is-active")); dot.type = "button";
+      dot.setAttribute("aria-label", "Banner " + (i + 1));
+      dot.addEventListener("click", () => goTo(i));
+      dotsHost.appendChild(dot);
+      return slide;
+    });
+    const dots = [...dotsHost.children];
+    let idx = 0, timer = null;
+    const goTo = i => { idx = (i + slides.length) % slides.length;
+      track.scrollTo({ left: slides[idx].offsetLeft - slides[0].offsetLeft, behavior: reduce ? "auto" : "smooth" }); };
+    let raf = 0;
+    const syncDots = () => { const base = slides[0].offsetLeft, x = track.scrollLeft;
+      let best = 0, bestD = Infinity;
+      slides.forEach((s, k) => { const d = Math.abs((s.offsetLeft - base) - x); if (d < bestD) { bestD = d; best = k; } });
+      idx = best; dots.forEach((d, k) => d.classList.toggle("is-active", k === best)); };
+    track.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(syncDots); }, { passive: true });
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+    const play = () => { if (reduce) return; stop(); timer = setInterval(() => goTo(idx + 1), 5000); };
+    const hero = $("#hero");
+    hero.addEventListener("mouseenter", stop);
+    hero.addEventListener("mouseleave", play);
+    document.addEventListener("visibilitychange", () => document.hidden ? stop() : play());
+    track.addEventListener("click", e => {
+      const a = e.target.closest("[data-to]"); if (!a) return;
+      const t = $(a.getAttribute("data-to")); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    });
+    play();
+    return slides;
+  };
+  const heroSlides = buildHero();
+  const upgradeHero = m => {
+    if (!heroSlides) return;
+    heroSlides.forEach((slide, i) => {
+      const bgFile = m.heroBg && m.heroBg["bg-" + (i + 1)];
+      if (bgFile) { const im = el("img"); im.alt = ""; im.loading = i ? "lazy" : "eager";
+        im.onload = () => { const host = slide.querySelector(".hslide__bg"); host.innerHTML = ""; host.appendChild(im); };
+        im.src = "assets/img/" + bgFile; }
+      const chFile = m.heroChar && m.heroChar["char-" + (i + 1)];
+      if (chFile) { const im = el("img", "hslide__char"); im.alt = ""; im.loading = "lazy";
+        im.onload = () => slide.appendChild(im);
+        im.src = "assets/img/" + chFile; }
+    });
   };
   const upgradeCardArt = (cardEl, file, alt) => {
     const im = el("img", "art"); im.alt = alt || ""; im.width = 300; im.height = 400; im.loading = "lazy";
@@ -196,7 +228,7 @@
     .then(r => r.ok ? r.json() : null)
     .then(m => {
       if (!m) return;
-      if (m.hero) buildHeroCarousel(m.hero);
+      upgradeHero(m);
       if (m.games) $$(".gcard[data-imgkey]").forEach(c => { const f = m.games[c.dataset.imgkey]; if (f) upgradeCardArt(c, f, c.dataset.name); });
       if (m.icons) $$(".ingame[data-key]").forEach(t => { const f = m.icons[t.dataset.key]; if (f) upgradeIcon(t, f, t.title); });
       if (m.promos) $$(".spromo[data-promo]").forEach(s => {

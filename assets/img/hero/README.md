@@ -1,22 +1,15 @@
-# Hero banner images
+# Hero banners (layered)
 
-Drop the rotating hero banners here. They show in the 570×265 hero slot as an
-auto-rotating carousel. Until files exist, the built-in SVG hero shows instead.
+The hero is now a **peek carousel** (1 full banner + ~75% of the next, auto-scrolling).
+Each slide is built from **separate layers** so you have full control:
 
-## Files (in display order)
-| File | Headline (from your banners) |
-|------|------------------------------|
-| `hero-1.webp` | BIGGER BETS, BIGGER WINS — Join & Win |
-| `hero-2.webp` | Real Wins, Real Fast — Spin Today |
-| `hero-3.webp` | YOUR JACKPOT AWAITS TONIGHT — Claim Bonus |
-| `hero-4.webp` | SPIN. WIN. REPEAT. — Play Now |
+- **Background** → upload to [`bg/`](./bg) (`bg-1 … bg-4`)
+- **Character** → upload to [`character/`](./character) (`char-1 … char-4`, transparent)
+- **Text** (heading, subheading, badges, CTA) is rendered by the site on the left side —
+  unique per slide, shared layout. Tell me any copy you want changed.
 
-## Specs
-- **Aspect ratio:** 570 × 265 (≈2.15:1). Export at 2× (**1140 × 530**) for crisp retina.
-- **Format:** `.webp` preferred (smallest); `.jpg`/`.png` also fine — just tell me which
-  and I'll match the extension in `assets/img/manifest.json`.
-- The headline + CTA are baked into your images, so the site shows the image only
-  (no text overlay).
+Until you upload backgrounds, each slide shows an on-brand gradient placeholder with the
+text + CTA already in place, so the layout is fully visible.
 
-After you upload, the file paths get listed in `assets/img/manifest.json` (relative
-to `assets/img/`, e.g. `hero/hero-1.webp`) and the carousel activates automatically.
+> The old composite banners (`nrbanner1–4.png`) are no longer used — they had the text
+> baked in, which conflicts with the new text overlay. You can delete them or leave them.

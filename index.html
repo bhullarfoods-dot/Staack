@@ -145,23 +145,10 @@
 
       <main class="content" id="lobby">
 
-        <!-- ---------- HERO ROW: 570x265 banner + side promos ---------- -->
-        <section class="hero-row" aria-label="Featured">
-          <article class="hero" id="hero">
-            <div class="hero__glow" aria-hidden="true"></div>
-            <div class="hero__body">
-              <p class="hero__kicker">Welcome package</p>
-              <h1 class="hero__title">Deposit &amp; get up to<br><span class="hero__amt">1000 free spins</span> + $3,500</h1>
-              <p class="hero__sub">Provably fair · instant on-chain payouts</p>
-              <div class="hero__cta">
-                <a class="btn btn--primary" href="#">Claim bonus</a>
-                <a class="btn btn--quiet" href="#">How it works</a>
-              </div>
-            </div>
-            <div class="hero__art" id="heroArt" aria-hidden="true"><!-- JS: SVG scene --></div>
-            <span class="hero__size" aria-hidden="true">570 × 265</span>
-          </article>
-
+        <!-- ---------- HERO: layered peek-carousel (bg + character + text) ---------- -->
+        <section class="hero" aria-label="Featured" id="hero">
+          <div class="hero__track" id="heroTrack"><!-- JS: slides --></div>
+          <div class="hero__dots" id="heroDots" aria-label="Choose banner"></div>
         </section>
 
         <div class="promo-row">
