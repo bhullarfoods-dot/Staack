@@ -1,5 +1,37 @@
 {
-  "hero": [],
-  "games": {},
+  "hero": [
+    "hero/nrbanner1.png",
+    "hero/nrbanner2.png",
+    "hero/nrbanner3.png",
+    "hero/nrbanner4.png"
+  ],
+  "games": {
+    "mines": "games/1.avif",
+    "crash": "games/2.avif",
+    "dice": "games/3.avif",
+    "plinko": "games/4.avif",
+    "hilo": "games/5.avif",
+    "wheel": "games/6.avif",
+    "tower": "games/7.avif",
+    "keno": "games/8.avif",
+    "limbo": "games/9.avif",
+    "coinflip": "games/10.avif",
+    "aztec-gold": "games/11.avif",
+    "neon-reels": "games/12.avif",
+    "cyber-fortune": "games/13.avif",
+    "crypto-kong": "games/14.avif",
+    "lucky-pharaoh": "games/15.avif",
+    "frost-wilds": "games/16.avif",
+    "diamond-rush": "games/17.avif",
+    "voodoo-nights": "games/18.avif",
+    "pirate-s-hoard": "games/19.avif",
+    "samurai-spins": "games/20.avif",
+    "golden-yeti": "games/1.avif",
+    "midnight-joker": "games/2.avif",
+    "inferno-7s": "games/3.avif",
+    "stellar-drift": "games/4.avif",
+    "rune-bound": "games/5.avif",
+    "toxic-reels": "games/6.avif"
+  },
   "icons": {}
 }
