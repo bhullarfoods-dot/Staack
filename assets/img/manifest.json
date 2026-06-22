@@ -37,5 +37,13 @@
   "promos": {
     "race": "promos/3.png",
     "refer": "promos/4.png"
-  }
+  },
+  "heroBg": {},
+  "heroChar": {},
+  "sidebar": {},
+  "topnav": {},
+  "wins": {},
+  "ui": {},
+  "crypto": {},
+  "features": {}
 }
