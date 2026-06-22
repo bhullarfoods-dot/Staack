@@ -205,22 +205,22 @@
     if (!heroSlides) return;
     heroSlides.forEach((slide, i) => {
       const bgFile = m.heroBg && m.heroBg["bg-" + (i + 1)];
-      if (bgFile) { const im = el("img"); im.alt = ""; im.loading = i ? "lazy" : "eager";
+      if (bgFile) { const im = el("img"); im.alt = ""; im.loading = "eager";
         im.onload = () => { const host = slide.querySelector(".hslide__bg"); host.innerHTML = ""; host.appendChild(im); };
         im.src = "assets/img/" + bgFile; }
       const chFile = m.heroChar && m.heroChar["char-" + (i + 1)];
-      if (chFile) { const im = el("img", "hslide__char"); im.alt = ""; im.loading = "lazy";
+      if (chFile) { const im = el("img", "hslide__char"); im.alt = ""; im.loading = "eager";
         im.onload = () => slide.appendChild(im);
         im.src = "assets/img/" + chFile; }
     });
   };
   const upgradeCardArt = (cardEl, file, alt) => {
-    const im = el("img", "art"); im.alt = alt || ""; im.width = 300; im.height = 400; im.loading = "lazy";
+    const im = el("img", "art"); im.alt = alt || ""; im.width = 300; im.height = 400; im.loading = "eager";
     im.onload = () => { const cur = cardEl.querySelector(".gcard__art .art"); if (cur) cur.replaceWith(im); };
     im.src = "assets/img/" + file;          // swaps over the SVG only once it actually loads
   };
   const upgradeIcon = (btn, file, alt) => {
-    const im = el("img", "ingame__img"); im.alt = alt || ""; im.width = 48; im.height = 48; im.loading = "lazy";
+    const im = el("img", "ingame__img"); im.alt = alt || ""; im.width = 48; im.height = 48; im.loading = "eager";
     im.onload = () => { btn.innerHTML = ""; btn.appendChild(im); btn.style.background = "none"; };
     im.src = "assets/img/" + file;
   };
@@ -240,7 +240,7 @@
     }).catch(() => {});
   };
   const imgIcon = (host, file, cls) => {
-    const im = el("img", cls); im.alt = ""; im.loading = "lazy";
+    const im = el("img", cls); im.alt = ""; im.loading = "eager";
     im.onload = () => { const old = host.querySelector("svg"); if (old) old.replaceWith(im); else { host.textContent = ""; host.style.background = "none"; host.appendChild(im); } };
     im.src = "assets/img/" + file;
   };
@@ -261,18 +261,18 @@
       if (m.features) $$("[data-feature]").forEach(h => { const f = m.features[h.dataset.feature]; if (f) imgIcon(h, f, "pcard__img"); });
       if (m.crypto) $$(".pay[data-coin]").forEach(p => {
         const f = m.crypto[p.dataset.coin]; if (!f) return;
-        const im = el("img", "pay__img"); im.alt = p.textContent.trim(); im.loading = "lazy";
+        const im = el("img", "pay__img"); im.alt = p.textContent.trim(); im.loading = "eager";
         im.onload = () => { p.textContent = ""; p.appendChild(im); };
         im.src = "assets/img/" + f;
       });
       if (Array.isArray(m.wins) && m.wins.length) $$(".win__ic").forEach((ic, i) => {
-        const im = el("img", "win__img"); im.alt = ""; im.loading = "lazy";
+        const im = el("img", "win__img"); im.alt = ""; im.loading = "eager";
         im.onload = () => { ic.textContent = ""; ic.style.background = "none"; ic.appendChild(im); };
         im.src = "assets/img/" + m.wins[i % m.wins.length];
       });
       if (m.promos) $$(".spromo[data-promo]").forEach(s => {
         const f = m.promos[s.dataset.promo]; if (!f) return;
-        const im = el("img", "spromo__img"); im.alt = ""; im.loading = "lazy";
+        const im = el("img", "spromo__img"); im.alt = ""; im.loading = "eager";
         im.onload = () => s.appendChild(im);
         im.src = "assets/img/" + f;
       });
