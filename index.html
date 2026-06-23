@@ -47,6 +47,11 @@
 <symbol id="ic-chevR" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
 <symbol id="ic-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-4 16-4-7-8-1Z"/></symbol>
 <symbol id="ic-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16M6.3 6.3 17.7 17.7M17.7 6.3 6.3 17.7"/></symbol>
+<symbol id="ic-headset" viewBox="0 0 24 24"><path d="M5 13a7 7 0 0 1 14 0"/><rect x="3.5" y="13" width="3.5" height="6" rx="1.4"/><rect x="17" y="13" width="3.5" height="6" rx="1.4"/><path d="M19 19a3 3 0 0 1-3 3h-2.5"/></symbol>
+<symbol id="ic-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></symbol>
+<symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 4.4-3.2 7.6-8 9-4.8-1.4-8-4.6-8-9V6Z"/></symbol>
+<symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+<symbol id="ic-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></symbol>
 </defs></svg>
 
 <a class="skip-link" href="#lobby">Skip to content</a>
@@ -95,6 +100,11 @@
       </nav>
 
       <a class="btn btn--ghost btn--block buycrypto" href="#" data-ui="buy-crypto"><svg class="ic"><use href="#ic-coin"/></svg> Buy Crypto</a>
+
+      <div class="sidebar__actions">
+        <button class="sbtn" type="button"><svg class="ic"><use href="#ic-headset"/></svg> Support</button>
+        <button class="sbtn" type="button"><svg class="ic"><use href="#ic-globe"/></svg> English</button>
+      </div>
 
       <div class="sidebar__foot">
         <a href="#">Terms</a><span aria-hidden="true">·</span><a href="#">Privacy</a><span aria-hidden="true">·</span><a href="#">Fairness</a>
@@ -164,10 +174,25 @@
           <div class="ticker__viewport"><ul class="ticker__track" id="winTrack"><!-- JS --></ul></div>
         </section>
 
+        <!-- ----------------------- GAME PUBLISHERS ----------------------- -->
+        <section class="section" id="publishers">
+          <div class="section__head"><h2 class="section__title"><svg class="ic section__ic"><use href="#ic-layers"/></svg>Publishers</h2><a class="section__all" href="#">View all</a></div>
+          <div class="pubs" id="pubRow">
+            <a class="pub" href="#" data-publisher="stake"><span class="pub__logo">Stake</span><span class="pub__meta"><span class="dot dot--live"></span><b>0</b> playing</span></a>
+            <a class="pub" href="#" data-publisher="pragmatic"><span class="pub__logo">Pragmatic Play</span><span class="pub__meta"><span class="dot dot--live"></span><b>0</b> playing</span></a>
+            <a class="pub" href="#" data-publisher="hacksaw"><span class="pub__logo">Hacksaw</span><span class="pub__meta"><span class="dot dot--live"></span><b>0</b> playing</span></a>
+            <a class="pub" href="#" data-publisher="evolution"><span class="pub__logo">Evolution</span><span class="pub__meta"><span class="dot dot--live"></span><b>0</b> playing</span></a>
+            <a class="pub" href="#" data-publisher="nolimit"><span class="pub__logo">Nolimit City</span><span class="pub__meta"><span class="dot dot--live"></span><b>0</b> playing</span></a>
+            <a class="pub" href="#" data-publisher="twist"><span class="pub__logo">Twist</span><span class="pub__meta"><span class="dot dot--live"></span><b>0</b> playing</span></a>
+            <a class="pub" href="#" data-publisher="massive"><span class="pub__logo">Massive</span><span class="pub__meta"><span class="dot dot--live"></span><b>0</b> playing</span></a>
+            <a class="pub" href="#" data-publisher="paperclip"><span class="pub__logo">Paperclip</span><span class="pub__meta"><span class="dot dot--live"></span><b>0</b> playing</span></a>
+          </div>
+        </section>
+
         <!-- ----------------------- NODEROLL ORIGINALS --------------------- -->
         <section class="section" id="originals">
           <div class="section__head">
-            <h2 class="section__title">NodeRoll Originals</h2>
+            <h2 class="section__title"><svg class="ic section__ic"><use href="#ic-diamond"/></svg>NodeRoll Originals</h2>
             <div class="rail__nav">
               <button class="iconbtn iconbtn--round" data-rail="origRail" data-dir="-1" aria-label="Scroll left"><svg class="ic"><use href="#ic-chevL"/></svg></button>
               <button class="iconbtn iconbtn--round" data-rail="origRail" data-dir="1" aria-label="Scroll right"><svg class="ic"><use href="#ic-chevR"/></svg></button>
@@ -179,7 +204,7 @@
         <!-- --------------------- FEATURED: MINES BOARD -------------------- -->
         <section class="section" id="play" aria-label="Featured game — Mines">
           <div class="section__head">
-            <h2 class="section__title">Play now · Mines</h2>
+            <h2 class="section__title"><svg class="ic section__ic"><use href="#ic-diamond"/></svg>Play now · Mines</h2>
             <span class="section__meta"><span class="dot dot--live"></span> 1,204 playing</span>
           </div>
 
@@ -218,6 +243,8 @@
             </form>
 
             <div class="board">
+              <span class="board__char board__char--left" data-mines="left" aria-hidden="true"></span>
+              <span class="board__char board__char--right" data-mines="right" aria-hidden="true"></span>
               <div class="board__top">
                 <span class="board__win">Max win <b>$100,924</b></span>
                 <span class="board__safe" id="safeCount">Gems 0 · Mines 5</span>
@@ -230,17 +257,17 @@
 
         <!-- -------------------------- TOP GAMES -------------------------- -->
         <section class="section" id="top">
-          <div class="section__head"><h2 class="section__title">Top Games</h2><a class="section__all" href="#">See all</a></div>
+          <div class="section__head"><h2 class="section__title"><svg class="ic section__ic"><use href="#ic-trend"/></svg>Top Games</h2><a class="section__all" href="#">See all</a></div>
           <div class="grid" id="topGrid"><!-- JS --></div>
         </section>
 
         <section class="section" id="new">
-          <div class="section__head"><h2 class="section__title">New Games</h2><a class="section__all" href="#">See all</a></div>
+          <div class="section__head"><h2 class="section__title"><svg class="ic section__ic"><use href="#ic-sparkle"/></svg>New Games</h2><a class="section__all" href="#">See all</a></div>
           <div class="grid" id="newGrid"><!-- JS --></div>
         </section>
 
         <section class="section" id="slots">
-          <div class="section__head"><h2 class="section__title">Slots &amp; Live</h2><a class="section__all" href="#">See all</a></div>
+          <div class="section__head"><h2 class="section__title"><svg class="ic section__ic"><use href="#ic-slots"/></svg>Slots &amp; Live</h2><a class="section__all" href="#">See all</a></div>
           <div class="grid" id="slotGrid"><!-- JS --></div>
         </section>
 
@@ -276,7 +303,7 @@
 
         <!-- ------------------------ LOYALTY BENTO ------------------------ -->
         <section class="section" id="loyalty">
-          <div class="section__head"><h2 class="section__title">Your loyalty</h2><span class="section__meta">Level 4 · Sapphire</span></div>
+          <div class="section__head"><h2 class="section__title"><svg class="ic section__ic"><use href="#ic-crown"/></svg>Your loyalty</h2><span class="section__meta">Level 4 · Sapphire</span></div>
           <div class="bento">
             <article class="tile tile--level">
               <span class="eyebrow">Current level</span>
@@ -301,6 +328,29 @@
                 <li><span class="rewards__ic rewards__ic--3" data-reward="free-case"><svg class="ic"><use href="#ic-star"/></svg></span> Free case <b>×3</b></li>
               </ul>
             </article>
+          </div>
+        </section>
+
+        <!-- ----------------------- LATEST BETS --------------------------- -->
+        <section class="section" id="latest">
+          <div class="section__head"><h2 class="section__title"><svg class="ic section__ic"><use href="#ic-clock"/></svg>Latest bets</h2></div>
+          <div class="bets">
+            <div class="bets__head" role="row">
+              <span>Game</span><span>Time</span><span>Player</span><span class="bets__num">Bet</span><span class="bets__mid">Multiplier</span><span class="bets__num">Payout</span>
+            </div>
+            <ul class="bets__body" id="betsBody"><!-- JS --></ul>
+          </div>
+        </section>
+
+        <!-- ----------------------- SELF EXCLUSION ------------------------ -->
+        <section class="section" id="responsible">
+          <div class="excl">
+            <span class="excl__ic" aria-hidden="true">18+</span>
+            <div class="excl__body">
+              <h3 class="excl__title">Self exclusion</h3>
+              <p class="excl__txt">NodeRoll is committed to responsible gambling. Gambling should be fun, entertaining and exciting. However, we recognize that some users may experience negative effects from gambling. We strive to support responsible gambling and offer tools to help users maintain control.</p>
+              <div class="excl__links"><a href="#">BeGambleAware.org</a><span aria-hidden="true">•</span><a href="#">GamCare.org.uk</a><span aria-hidden="true">•</span><a href="#">Gamblers Anonymous</a></div>
+            </div>
           </div>
         </section>
 

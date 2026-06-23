@@ -102,6 +102,37 @@
   [...wins, ...wins].forEach(w => winTrack.appendChild(winNode(w)));
 
   /* =================================================================
+     Publishers — fill live "playing" counts
+  ================================================================== */
+  $$(".pub .pub__meta b").forEach(b => { b.textContent = (rand(120, 15000) | 0).toLocaleString("en-US"); });
+
+  /* =================================================================
+     Latest bets table
+  ================================================================== */
+  const betGames = ["1 Reel Monkey", "Boomchest", "1 Reel - Trading Frenzy", "10 Devils Hotfire",
+    "1 Reel - Xmas Magic", "100 Flaring Fruits", "1 Reel Santa", "1 Reel Reef", "81 Burning Ways",
+    "Ancient Egypt", "Sweet Bonanza", "Gates of Olympus", "Sugar Rush", "Big Bass Splash"];
+  const betsBody = $("#betsBody");
+  if (betsBody) {
+    const stamp = off => new Date(Date.now() - off * 1000).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    const player = () => pick(["User" + (rand(100000, 999999) | 0), pick(users).replace("@", ""), "AugustHamilton908", "numlugar5", "88ccccc"]);
+    for (let i = 0; i < 10; i++) {
+      const amt = rand(0.03, 2.6);
+      const mx = pick([0, 0, 0.19, 0.5, 0.21, 0.58, 0.2, 1.67, 3.5, 87.03, 383.33]);
+      const win = mx >= 1, pay = amt * mx;
+      const li = el("li", "bet");
+      li.innerHTML =
+        `<span class="bet__game"><span class="bet__thumb"></span><span class="bet__name">${betGames[i % betGames.length]}</span></span>
+         <span class="bet__time">${stamp(i * 5 + (rand(0, 4) | 0))}</span>
+         <span class="bet__player">${player()}</span>
+         <span class="bet__amt">$${amt.toFixed(2)}</span>
+         <span class="bet__mult${win ? " is-win" : ""}">x${mx.toFixed(2)}</span>
+         <span class="bet__amt${win ? " is-win" : ""}">$${pay.toFixed(2)}</span>`;
+      betsBody.appendChild(li);
+    }
+  }
+
+  /* =================================================================
      Game cards (rails + grids)
   ================================================================== */
   const card = (g, i) => {
@@ -287,6 +318,19 @@
       wireFill("[data-reward]", m.rewards, "reward", "rw__img");
       wireFill("[data-stat]", m.stats, "stat", "tile__icimg");
       wireFill("[data-level]", m.level, "level", "level__img");
+      wireFill("[data-mines]", m.mines, "mines", "board__charimg");
+      if (m.publishers) $$(".pub[data-publisher]").forEach(p => {
+        const f = m.publishers[p.dataset.publisher]; if (!f) return;
+        const logo = p.querySelector(".pub__logo"); const im = el("img");
+        im.alt = logo.textContent.trim(); im.loading = "eager";
+        im.onload = () => { logo.textContent = ""; logo.appendChild(im); };
+        im.src = "assets/img/" + f;
+      });
+      if (Array.isArray(m.wins) && m.wins.length) $$(".bet__thumb").forEach((t, i) => {
+        const im = el("img"); im.alt = ""; im.loading = "eager";
+        im.onload = () => { t.appendChild(im); };
+        im.src = "assets/img/" + m.wins[i % m.wins.length];
+      });
       if (Array.isArray(m.avatars) && m.avatars.length) {
         CHAT_AVATARS = m.avatars;
         $$(".msg__av[data-user]").forEach(av => applyAvatar(av, av.dataset.user));

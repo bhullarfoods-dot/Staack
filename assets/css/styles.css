@@ -170,7 +170,7 @@ ul{list-style:none;padding:0}
 .sidebar__inner{height:100%;overflow-y:auto;overscroll-behavior:contain;
   width:var(--sidebar-w);padding:18px 14px 16px;display:flex;flex-direction:column;gap:16px}
 
-.logo{font-size:30px;letter-spacing:.06em;color:#fff;line-height:1;padding:2px 6px}
+.logo{font-size:30px;letter-spacing:.06em;color:#fff;line-height:1;padding:2px 6px;display:block;text-align:center}
 
 .ingames__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding:0 4px}
 .ingames__strip{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
@@ -262,7 +262,8 @@ ul{list-style:none;padding:0}
 /* ============================== sections =========================== */
 .section{display:flex;flex-direction:column;gap:16px}
 .section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
-.section__title{font-size:clamp(22px,2.4vw,30px);letter-spacing:.04em;color:#fff;line-height:.95}
+.section__title{font-size:clamp(22px,2.4vw,30px);letter-spacing:.04em;color:#fff;line-height:.95;display:flex;align-items:center;gap:10px}
+.section__ic{width:23px;height:23px;color:var(--neon-1);flex:0 0 auto}
 .section__meta{display:flex;align-items:center;gap:8px;color:var(--ink-3);font-size:14px;letter-spacing:.06em}
 .section__all{color:var(--neon-1);font-size:15px;letter-spacing:.06em;transition:color var(--t-pop) var(--ease-out)}
 @media(hover:hover){.section__all:hover{color:#fff}}
@@ -350,7 +351,10 @@ ul{list-style:none;padding:0}
 .rail{display:grid;grid-auto-flow:column;grid-auto-columns:164px;gap:14px;overflow-x:auto;
   scroll-snap-type:x mandatory;padding:4px 2px 12px;scroll-behavior:smooth}
 .rail>*{scroll-snap-align:start}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:14px}
+/* 12 cards per grid: 4 cols (3 rows) with chat open, 6 cols (2 rows) when collapsed.
+   12 is divisible by 6/4/3/2 so a row is never left half-empty. */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.content-grid.chat-collapsed .grid{grid-template-columns:repeat(6,1fr)}
 
 .gcard{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);
   background:var(--surface);box-shadow:var(--sh-1);display:flex;flex-direction:column;
@@ -413,7 +417,7 @@ ul{list-style:none;padding:0}
 .board{background:
     radial-gradient(80% 90% at 50% 0%,rgba(68,5,228,.25),transparent 60%),
     var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:16px;
-  display:flex;flex-direction:column;gap:14px;min-height:100%}
+  display:flex;flex-direction:column;gap:14px;min-height:100%;position:relative;overflow:hidden}
 .board__top{display:flex;align-items:center;justify-content:space-between;font-size:14px;letter-spacing:.06em;color:var(--ink-3)}
 .board__win b{color:#ffd54a;font-size:17px;margin-left:4px}
 .board__safe{color:var(--ink-2)}
@@ -512,6 +516,68 @@ ul{list-style:none;padding:0}
 .footer__license,.footer__copy{font-size:12.5px;letter-spacing:.04em;line-height:1.6;color:var(--ink-3)}
 .footer__copy{color:var(--ink-2)}
 
+/* ----------------------- sidebar support / language ----------------------- */
+.sidebar__actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sbtn{display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 8px;border-radius:11px;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink-2);font-size:13px;letter-spacing:.05em;
+  touch-action:manipulation;transition:background var(--t-pop) var(--ease-out),color var(--t-pop) var(--ease-out),transform var(--t-press) var(--ease-out)}
+.sbtn .ic{width:17px;height:17px}
+.sbtn:active{transform:scale(.97)}
+@media(hover:hover){.sbtn:hover{background:var(--surface-3);color:var(--ink)}}
+
+/* ----------------------- Mines board characters ----------------------- */
+.board__char{position:absolute;bottom:0;z-index:0;height:74%;max-height:340px;pointer-events:none;
+  object-fit:contain;display:none}
+.board__char:not(:empty){display:block}
+.board__char img{height:100%;width:auto;object-fit:contain;display:block;filter:drop-shadow(0 12px 26px rgba(0,0,0,.45))}
+.board__char--left{left:-6px;object-position:left bottom}
+.board__char--right{right:-6px;object-position:right bottom}
+.board__char--right img{margin-left:auto}
+.mines{position:relative;z-index:1}
+/* hide the characters whenever the board gets tight so they never overlap the tiles */
+@media (max-width:1480px){ .board__char{display:none !important} }
+
+/* ----------------------- publishers ----------------------- */
+.pubs{display:grid;grid-template-columns:repeat(8,1fr);gap:12px}
+.pub{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:84px;
+  padding:14px 10px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);
+  touch-action:manipulation;transition:transform var(--t-press) var(--ease-out),border-color var(--t-pop) var(--ease-out)}
+.pub:active{transform:scale(.98)}
+@media(hover:hover){.pub:hover{border-color:var(--line-2);transform:translateY(-2px)}}
+.pub__logo{font-size:16px;letter-spacing:.04em;color:var(--ink);text-align:center;line-height:1.05}
+.pub__logo img{max-width:100%;max-height:34px;width:auto;height:auto;object-fit:contain;display:block;filter:brightness(0) invert(1)}
+.pub__meta{display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.04em;color:var(--ink-3)}
+.pub__meta b{color:#36e0a0;font-weight:400}
+
+/* ----------------------- latest bets ----------------------- */
+.bets{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.bets__head,.bet{display:grid;grid-template-columns:2fr 1.2fr 1.4fr 1fr 1fr 1fr;align-items:center;gap:12px;padding:12px 18px}
+.bets__head{font-size:12px;letter-spacing:.08em;color:var(--ink-3);border-bottom:1px solid var(--line);text-transform:uppercase}
+.bets__num{text-align:right}
+.bets__mid{text-align:center}
+.bets__body{display:flex;flex-direction:column}
+.bet{font-size:14px;color:var(--ink-2);border-top:1px solid var(--line-soft)}
+.bet:nth-child(odd){background:rgba(239,237,246,.02)}
+.bet__game{display:flex;align-items:center;gap:10px;color:var(--ink);min-width:0}
+.bet__thumb{width:30px;height:30px;border-radius:8px;flex:0 0 auto;overflow:hidden;display:grid;place-items:center;background:var(--surface-3)}
+.bet__thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.bet__name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bet__mult{justify-self:center;padding:4px 10px;border-radius:8px;background:var(--surface-3);color:var(--ink-2);font-size:13px}
+.bet__mult.is-win{background:rgba(54,224,160,.16);color:#36e0a0}
+.bet__amt{text-align:right;white-space:nowrap}
+.bet__amt.is-win{color:#36e0a0}
+
+/* ----------------------- self exclusion ----------------------- */
+.excl{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:20px 22px}
+.excl__ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:var(--pulse);color:#fff;font-size:15px;letter-spacing:.02em}
+.excl__title{font-size:20px;letter-spacing:.04em;color:#fff;margin-bottom:6px}
+.excl__txt{font-size:13.5px;line-height:1.6;letter-spacing:.03em;color:var(--ink-3);max-width:88ch}
+.excl__links{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px;font-size:13px;color:var(--ink-3)}
+.excl__links a{color:var(--neon-1)}
+@media(hover:hover){.excl__links a:hover{color:#fff}}
+
 /* =============================== chat ============================== */
 .chat{position:sticky;top:var(--topbar-h);height:calc(100dvh - var(--topbar-h));z-index:var(--z-chat);
   border-left:1px solid var(--line);background:var(--bg-2);display:flex;flex-direction:column;overflow:hidden}
@@ -577,10 +643,13 @@ ul{list-style:none;padding:0}
   .promos{grid-template-columns:1fr}
   .footer__top{grid-template-columns:1fr;gap:26px}
   .footer__nav{grid-template-columns:repeat(3,1fr)}
+  .grid{grid-template-columns:repeat(4,1fr)}
+  .pubs{grid-template-columns:repeat(4,1fr)}
 }
 @media (max-width:980px){
   .hslide{flex-basis:88%}
   .hslide__content{max-width:78%}
+  .grid{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:860px){
   .app{grid-template-columns:1fr}
@@ -592,6 +661,9 @@ ul{list-style:none;padding:0}
   .gifts,.onlinestat,.hide-sm{display:none}
   .content{padding:16px 14px 32px}
   .footer__nav{grid-template-columns:repeat(2,1fr);gap:16px}
+  .pubs{grid-template-columns:repeat(3,1fr)}
+  .bets__head,.bet{grid-template-columns:2fr 1fr 1fr 1fr}
+  .bets__head>:nth-child(2),.bets__head>:nth-child(3),.bet__time,.bet__player{display:none}
 }
 @media (max-width:520px){
   .hslide{flex-basis:92%}
@@ -599,6 +671,9 @@ ul{list-style:none;padding:0}
   .bento{grid-template-columns:1fr}
   .tile--level,.tile--rewards{grid-column:span 1}
   .coin__delta{display:none}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .pubs{grid-template-columns:repeat(2,1fr)}
+  .excl{flex-direction:column;gap:12px}
 }
 
 /* nav-open backdrop on mobile */
