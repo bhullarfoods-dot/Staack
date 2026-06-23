@@ -174,5 +174,7 @@
     "nolimit": "publishers/nolimit.svg",
     "relax": "publishers/relax.svg"
   },
-  "excl": {}
+  "excl": {
+    "character": "excl/Symbol_02.png"
+  }
 }
