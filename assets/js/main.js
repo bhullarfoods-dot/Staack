@@ -264,7 +264,7 @@
   };
   const upgradeIcon = (btn, file, alt) => {
     const im = el("img", "ingame__img"); im.alt = alt || ""; im.width = 48; im.height = 48; im.loading = "eager";
-    im.onload = () => { btn.innerHTML = ""; btn.appendChild(im); btn.style.background = "none"; };
+    im.onload = () => { btn.innerHTML = ""; btn.appendChild(im); };   // keep the tile gradient behind the 3D icon
     im.src = "assets/img/" + file;
   };
   // Colored icons must keep their own palette -> rendered as <img>. Everything else is
@@ -319,6 +319,7 @@
       wireFill("[data-stat]", m.stats, "stat", "tile__icimg");
       wireFill("[data-level]", m.level, "level", "level__img");
       wireFill("[data-mines]", m.mines, "mines", "board__charimg");
+      wireFill("[data-excl]", m.excl, "excl", "excl__img");
       if (m.publishers) $$(".pub[data-publisher]").forEach(p => {
         const f = m.publishers[p.dataset.publisher]; if (!f) return;
         const logo = p.querySelector(".pub__logo"); const im = el("img");

@@ -159,6 +159,19 @@
     "avatars/avatar-nun-sister-svgrepo-com.svg",
     "avatars/avatar-person-pilot-svgrepo-com.svg"
   ],
-  "mines": {},
-  "publishers": {}
+  "mines": {
+    "left": "mines/left.png",
+    "right": "mines/right.png"
+  },
+  "publishers": {
+    "pragmatic": "publishers/pp.svg",
+    "evolution": "publishers/ev.svg",
+    "hacksaw": "publishers/hs.svg",
+    "pgsoft": "publishers/pg.svg",
+    "playngo": "publishers/playngo_logo.svg",
+    "yggdrasil": "publishers/yggdrasil.svg",
+    "nolimit": "publishers/nolimit.svg",
+    "relax": "publishers/relax.svg"
+  },
+  "excl": {}
 }
