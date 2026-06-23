@@ -33,7 +33,13 @@
     "rune-bound": "games/5.avif",
     "toxic-reels": "games/6.avif"
   },
-  "icons": {},
+  "icons": {
+    "mines": "tiles/3.png",
+    "crash": "tiles/1.png",
+    "dice": "tiles/4.png",
+    "plinko": "tiles/2.png",
+    "hilo": "tiles/5.png"
+  },
   "promos": {
     "race": "features/character_6.png",
     "refer": "features/character_2.png"
@@ -105,9 +111,52 @@
     "sports": "features/05.png",
     "futures": "features/06.png"
   },
-  "originals": {},
-  "rewards": {},
-  "stats": {},
-  "level": {},
-  "avatars": []
+  "originals": {
+    "mines": "originals/1.png",
+    "crash": "originals/2.png",
+    "dice": "originals/3.png",
+    "plinko": "originals/4.png",
+    "hilo": "originals/5.png",
+    "wheel": "originals/8.png",
+    "tower": "originals/10.png",
+    "keno": "originals/11.png",
+    "limbo": "originals/12.png",
+    "coinflip": "originals/13.png"
+  },
+  "rewards": {
+    "weekly-bonus": "rewards/Symbol_02.png",
+    "rakeback-boost": "rewards/Symbol_03.png",
+    "free-case": "rewards/Symbol_04.png"
+  },
+  "stats": {
+    "wagered": "stats/wagered.png",
+    "wins": "stats/wins.png",
+    "drops": "stats/drop.png"
+  },
+  "level": {
+    "badge": "level/level-badge.png",
+    "character": "level/character.png"
+  },
+  "avatars": [
+    "avatars/avatar-avocado-food-svgrepo-com.svg",
+    "avatars/avatar-bad-breaking-svgrepo-com.svg",
+    "avatars/avatar-batman-comics-svgrepo-com.svg",
+    "avatars/avatar-boy-kid-svgrepo-com.svg",
+    "avatars/avatar-cacti-cactus-svgrepo-com.svg",
+    "avatars/avatar-coffee-cup-svgrepo-com.svg",
+    "avatars/avatar-dead-monster-svgrepo-com.svg",
+    "avatars/avatar-einstein-professor-svgrepo-com.svg",
+    "avatars/avatar-elderly-grandma-svgrepo-com.svg",
+    "avatars/avatar-geisha-japanese-svgrepo-com.svg",
+    "avatars/avatar-hindi-indian-svgrepo-com.svg",
+    "avatars/avatar-joker-squad-svgrepo-com.svg",
+    "avatars/avatar-lazybones-sloth-svgrepo-com.svg",
+    "avatars/avatar-male-ozzy-svgrepo-com.svg",
+    "avatars/avatar-male-president-svgrepo-com.svg",
+    "avatars/avatar-man-muslim-svgrepo-com.svg",
+    "avatars/avatar-man-person-svgrepo-com.svg",
+    "avatars/avatar-muslim-paranja-svgrepo-com.svg",
+    "avatars/avatar-nun-sister-svgrepo-com.svg",
+    "avatars/avatar-person-pilot-svgrepo-com.svg"
+  ]
 }
