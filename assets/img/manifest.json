@@ -67,7 +67,8 @@
     "favorites": "sidebar/0fbcc511-4a6f-4046-add3-9985d14bf908.svg",
     "nft-vault": "sidebar/90745443-19aa-47ce-9cc7-aae3a5769323.svg",
     "loyalty": "sidebar/73226414-a6cc-418c-a840-5f6cceef6992.svg",
-    "tournaments": "sidebar/2c11d9b5-a716-4375-a8a0-f2cf97e19d85.svg"
+    "tournaments": "sidebar/2c11d9b5-a716-4375-a8a0-f2cf97e19d85.svg",
+    "providers": "sidebar/57332f10-0080-4f8c-939a-8fe8dbb61500.svg"
   },
   "topnav": {
     "search": "topnav/search.svg",
