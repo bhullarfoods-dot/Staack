@@ -308,13 +308,14 @@ ul{list-style:none;padding:0}
 .hslide__char{position:absolute;right:18px;bottom:0;top:auto;z-index:2;height:114%;width:auto;max-width:42%;
   object-fit:contain;object-position:right bottom;pointer-events:none;filter:drop-shadow(0 14px 26px rgba(0,0,0,.45))}
 .hslide__content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;
-  justify-content:center;gap:10px;padding:28px 30px;max-width:62%}
+  justify-content:center;gap:10px;padding:28px 30px;width:62%;container-type:inline-size}
 .hslide__badges{display:flex;flex-wrap:wrap;gap:6px}
 .hbadge{font-size:11px;letter-spacing:.14em;color:#fff;background:rgba(255,255,255,.13);
   border:1px solid rgba(255,255,255,.2);padding:3px 9px;border-radius:99px}
 .hbadge--hot{background:var(--grad-primary);border-color:transparent;box-shadow:var(--glow-plasma)}
-.hslide__title{font-size:clamp(25px,2.9vw,40px);line-height:.9;letter-spacing:.01em;color:#fff}
-.hslide__sub{font-size:14px;letter-spacing:.05em;color:rgba(255,255,255,.82);max-width:34ch}
+/* sized to the slide (container query) so headings never overflow when chat is open */
+.hslide__title{font-size:clamp(17px,10.5cqi,38px);line-height:.9;letter-spacing:.01em;color:#fff;overflow-wrap:break-word}
+.hslide__sub{font-size:clamp(10px,3.8cqi,14px);letter-spacing:.05em;color:rgba(255,255,255,.82);max-width:34ch}
 .hslide__cta{display:flex;gap:10px;margin-top:4px}
 .hero__dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
 .hero__dot{width:8px;height:8px;border-radius:99px;background:var(--line-2);border:0;cursor:pointer;padding:0;
@@ -471,7 +472,7 @@ ul{list-style:none;padding:0}
 .mstep.is-on small{color:rgba(255,255,255,.8)}
 
 /* ============================ promo trio =========================== */
-.promos{display:grid;grid-template-columns:1.2fr 1.2fr .9fr;gap:16px}
+.promos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
 .pcard{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line-2);
   min-height:210px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
   transition:transform var(--t-pop) var(--ease-out),box-shadow var(--t-pop) var(--ease-out)}
@@ -551,18 +552,18 @@ ul{list-style:none;padding:0}
 @media(hover:hover){.sbtn:hover{background:var(--surface-3);color:var(--ink)}}
 
 /* ----------------------- Mines board characters ----------------------- */
-/* Each character only occupies the real empty margin beside the 460px grid:
-   width = (boardWidth - 500) / 2. When that is <=0 (tight board / small screens)
-   the slot collapses to nothing, so the art is never cropped or overlapped. */
-.board__char{position:absolute;top:0;bottom:0;z-index:0;width:calc((100% - 500px) / 2);
-  display:none;align-items:flex-end;justify-content:center;overflow:hidden;pointer-events:none}
-.board__char:not(:empty){display:flex}
-.board__char img{max-width:100%;max-height:84%;width:auto;height:auto;object-fit:contain;display:block;
+/* Characters live in a flex row beside the centered grid (own columns), so they
+   can never sit behind the grid, the top bar or the multiplier buttons. Each
+   column only takes leftover space; when it runs out the art crops from the
+   OUTER edge (left char from the left, right char from the right). */
+.board__mid{display:flex;align-items:stretch;justify-content:center;gap:0;width:100%}
+.board__mid .mines{flex:0 1 460px;align-self:center}
+.board__char{flex:1 1 0;min-width:0;display:flex;align-items:flex-end;overflow:hidden;pointer-events:none}
+.board__char:empty{display:none}
+.board__char img{height:auto;max-height:340px;width:auto;max-width:none;flex:0 0 auto;object-fit:contain;display:block;
   filter:drop-shadow(0 12px 26px rgba(0,0,0,.45))}
-.board__char--left{left:0}
-.board__char--right{right:0}
-/* keep the board text/grid/multibar above the characters */
-.board__top,.multibar,.mines{position:relative;z-index:1}
+.board__char--left{justify-content:flex-end}   /* sit next to grid; crop off the left */
+.board__char--right{justify-content:flex-start}/* sit next to grid; crop off the right */
 
 /* ----------------------- publishers ----------------------- */
 .pubs{display:grid;grid-template-columns:repeat(8,1fr);gap:12px}
@@ -596,9 +597,9 @@ ul{list-style:none;padding:0}
 
 /* ----------------------- self exclusion ----------------------- */
 .excl{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--r-lg);padding:20px 22px;position:relative;overflow:hidden;min-height:150px}
+  border-radius:var(--r-lg);padding:22px 24px;position:relative;overflow:hidden;min-height:210px}
 .excl__ic,.excl__body{position:relative;z-index:1}
-.excl__char{position:absolute;right:24px;bottom:0;top:0;width:210px;z-index:0;display:none}
+.excl__char{position:absolute;right:26px;bottom:0;top:0;width:300px;z-index:0;display:none}
 .excl__char:not(:empty){display:block}
 .excl__char .excl__img{height:100%;width:100%;object-fit:contain;object-position:right bottom}
 .excl__ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;

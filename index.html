@@ -300,13 +300,15 @@
             </form>
 
             <div class="board">
-              <span class="board__char board__char--left" data-mines="left" aria-hidden="true"></span>
-              <span class="board__char board__char--right" data-mines="right" aria-hidden="true"></span>
               <div class="board__top">
                 <span class="board__win">Max win <b>$100,924</b></span>
                 <span class="board__safe" id="safeCount">Gems 0 · Mines 5</span>
               </div>
-              <div class="mines" id="minesGrid" aria-label="Mines board"><!-- JS --></div>
+              <div class="board__mid">
+                <span class="board__char board__char--left" data-mines="left" aria-hidden="true"></span>
+                <div class="mines" id="minesGrid" aria-label="Mines board"><!-- JS --></div>
+                <span class="board__char board__char--right" data-mines="right" aria-hidden="true"></span>
+              </div>
               <div class="multibar" id="multibar"><!-- JS --></div>
             </div>
           </div>
