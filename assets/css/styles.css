@@ -167,8 +167,12 @@ ul{list-style:none;padding:0}
 /* ============================== sidebar ============================= */
 .sidebar{border-right:1px solid var(--line);background:var(--bg-2);overflow:hidden;
   position:sticky;top:0;height:100dvh;align-self:start}
-.sidebar__inner{height:100%;overflow-y:auto;overscroll-behavior:contain;
-  width:var(--sidebar-w);padding:18px 14px 16px;display:flex;flex-direction:column;gap:16px}
+.sidebar__inner{height:100%;width:var(--sidebar-w);padding:18px 14px 16px;
+  display:flex;flex-direction:column;gap:16px;min-height:0}
+.sidebar__scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  display:flex;flex-direction:column;gap:16px;margin:0 -4px;padding:0 4px}
+.sidebar__bottom{flex:0 0 auto;display:flex;flex-direction:column;gap:16px;
+  padding-top:14px;border-top:1px solid var(--line-soft)}
 
 .logo{font-size:30px;letter-spacing:.06em;color:#fff;line-height:1;padding:2px 6px;display:block;text-align:center}
 
