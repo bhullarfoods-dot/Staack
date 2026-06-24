@@ -165,7 +165,7 @@ ul{list-style:none;padding:0}
 }
 
 /* ============================== sidebar ============================= */
-.sidebar{border-right:1px solid var(--line);background:var(--bg-2);overflow:hidden;
+.sidebar{border-right:1px solid var(--line);background:rgb(25 25 57);overflow:hidden;
   position:sticky;top:0;height:100dvh;align-self:start}
 .sidebar__inner{height:100%;width:var(--sidebar-w);padding:18px 14px 16px;
   display:flex;flex-direction:column;gap:16px;min-height:0}
@@ -218,7 +218,7 @@ ul{list-style:none;padding:0}
 .main-region{display:flex;flex-direction:column;min-width:0}
 .topbar{position:sticky;top:0;z-index:var(--z-sticky);height:var(--topbar-h);
   display:flex;align-items:center;gap:10px;padding:0 16px;
-  background:var(--bg);border-bottom:1px solid var(--line)}
+  background:rgb(25 25 57);border-bottom:1px solid var(--line)}
 .topbar__menu{display:none}
 .topbar__collapse{display:grid;flex:0 0 auto}
 .topbar__spacer{flex:1}
@@ -565,7 +565,7 @@ ul{list-style:none;padding:0}
 .bets__mid{text-align:center}
 .bets__body{display:flex;flex-direction:column}
 .bet{font-size:14px;color:var(--ink-2);border-top:1px solid var(--line-soft)}
-.bet:nth-child(odd){background:rgba(239,237,246,.02)}
+.bet:nth-child(odd){background:#090c1d}
 .bet__game{display:flex;align-items:center;gap:10px;color:var(--ink);min-width:0}
 .bet__thumb{width:30px;height:30px;border-radius:8px;flex:0 0 auto;overflow:hidden;display:grid;place-items:center;background:var(--surface-3)}
 .bet__thumb img{width:100%;height:100%;object-fit:cover;display:block}
@@ -592,7 +592,7 @@ ul{list-style:none;padding:0}
 
 /* =============================== chat ============================== */
 .chat{position:sticky;top:var(--topbar-h);height:calc(100dvh - var(--topbar-h));z-index:var(--z-chat);
-  border-left:1px solid var(--line);background:var(--bg-2);display:flex;flex-direction:column;overflow:hidden}
+  border-left:1px solid var(--line);background:rgb(25 25 57);display:flex;flex-direction:column;overflow:hidden}
 .content-grid.chat-collapsed .chat{transform:translateX(100%);opacity:0;pointer-events:none;
   transition:transform var(--t-panel) var(--ease-out),opacity var(--t-panel) var(--ease-out)}
 .chat__head{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
