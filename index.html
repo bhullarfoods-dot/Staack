@@ -52,6 +52,19 @@
 <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 4.4-3.2 7.6-8 9-4.8-1.4-8-4.6-8-9V6Z"/></symbol>
 <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
 <symbol id="ic-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></symbol>
+<symbol id="ic-chevD" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="ic-basket" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6c3.2 3.2 3.2 10.4 0 13.6M18.4 5.6c-3.2 3.2-3.2 10.4 0 13.6"/></symbol>
+<symbol id="ic-tennis" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.5 6.5c4 2.4 4 8.6 0 11M18.5 6.5c-4 2.4-4 8.6 0 11"/></symbol>
+<symbol id="ic-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
+<symbol id="ic-bat" viewBox="0 0 24 24"><path d="M14.5 4.5 19 9 9.5 18.5l-2.5.8.8-2.5Z"/><circle cx="5.5" cy="18.5" r="1.7"/></symbol>
+<symbol id="ic-hockey" viewBox="0 0 24 24"><path d="M5 19h14M7 19 15 5l2.5 1"/><ellipse cx="17.5" cy="19" rx="2.2" ry="1.3" fill="currentColor"/></symbol>
+<symbol id="ic-mma" viewBox="0 0 24 24"><path d="M7 10V7.5a1.8 1.8 0 0 1 3.6 0M10.6 8.6a1.8 1.8 0 0 1 3.6 0V11M7 10h7.2v4.5a4 4 0 0 1-4 4H9.2A2.2 2.2 0 0 1 7 16.3Z"/></symbol>
+<symbol id="ic-pong" viewBox="0 0 24 24"><circle cx="9.5" cy="9.5" r="5.5"/><path d="m13.4 13.4 5 5"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></symbol>
+<symbol id="ic-horse" viewBox="0 0 24 24"><path d="M5 20c0-5.5 2.2-8.5 6.5-9.5L13 7l3 1.8 3-1-1 3.2c1.2 2.4 1 5.6-1.2 9M11.5 10.5 8 13"/></symbol>
+<symbol id="ic-gauge" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 14 4.5-4"/><circle cx="12" cy="18" r="1.5" fill="currentColor"/></symbol>
+<symbol id="ic-megaphone" viewBox="0 0 24 24"><path d="M4 10.5v3l3 .8 1.8 3.7h2l-1-3.4 8 2.4V7.5l-8 2.4H7Z"/><path d="M18 9.5a3 3 0 0 1 0 5"/></symbol>
+<symbol id="ic-ticket" viewBox="0 0 24 24"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h13A1.5 1.5 0 0 1 20 8.5a2 2 0 0 0 0 4 1.5 1.5 0 0 1 0 3 2 2 0 0 0 0 .5 1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 16a2 2 0 0 0 0-3 1.5 1.5 0 0 1 0-3 2 2 0 0 0 0-1.5Z"/><path d="M14 7v10"/></symbol>
+<symbol id="ic-vote" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M4 14h16M12 4v6M9 6.5 12 4l3 2.5"/></symbol>
 </defs></svg>
 
 <a class="skip-link" href="#lobby">Skip to content</a>
@@ -72,33 +85,73 @@
         <div class="ingames__strip" id="ingameStrip"><!-- JS --></div>
       </section>
 
-      <div class="seg" role="tablist" aria-label="Mode">
-        <button class="seg__btn is-active" role="tab" aria-selected="true" data-mode="casino">Casino</button>
-        <button class="seg__btn" role="tab" aria-selected="false" data-mode="sports">Sports</button>
-      </div>
-
       <div class="sidebar__scroll">
-        <nav class="nav" aria-label="Casino sections">
-          <a class="nav__item is-active" href="#originals" data-nav="originals"><span class="nav__ic"><svg class="ic"><use href="#ic-diamond"/></svg></span> NodeRoll Originals</a>
-          <a class="nav__item" href="#top" data-nav="top-games"><span class="nav__ic"><svg class="ic"><use href="#ic-trend"/></svg></span> Top Games</a>
-          <a class="nav__item" href="#new" data-nav="new-games"><span class="nav__ic"><svg class="ic"><use href="#ic-sparkle"/></svg></span> New Games</a>
-          <a class="nav__item" href="#top" data-nav="hot-games"><span class="nav__ic"><svg class="ic"><use href="#ic-flame"/></svg></span> Hot Games</a>
-          <a class="nav__item" href="#slots" data-nav="slots"><span class="nav__ic"><svg class="ic"><use href="#ic-slots"/></svg></span> Slots</a>
-          <a class="nav__item" href="#originals" data-nav="crash-games"><span class="nav__ic"><svg class="ic"><use href="#ic-rocket"/></svg></span> Crash Games</a>
-          <a class="nav__item" href="#slots" data-nav="live-casino"><span class="nav__ic"><svg class="ic"><use href="#ic-live"/></svg></span> Live Casino</a>
-          <a class="nav__item" href="#top" data-nav="favorites"><span class="nav__ic"><svg class="ic"><use href="#ic-star"/></svg></span> Favorites</a>
-          <a class="nav__item" href="#slots" data-nav="providers"><span class="nav__ic"><svg class="ic"><use href="#ic-layers"/></svg></span> Providers</a>
-        </nav>
+        <div class="navgroup is-open">
+          <button class="navgroup__head" type="button" aria-expanded="true">
+            <span class="navgroup__ic"><svg class="ic"><use href="#ic-slots"/></svg></span>
+            <span class="navgroup__label">Casino</span>
+            <svg class="ic navgroup__chev"><use href="#ic-chevD"/></svg>
+          </button>
+          <div class="navgroup__panel"><div class="navgroup__list">
+            <a class="navsub is-active" href="#originals"><svg class="ic"><use href="#ic-diamond"/></svg> NodeRoll Originals</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-flame"/></svg> Popular</a>
+            <a class="navsub" href="#new"><svg class="ic"><use href="#ic-sparkle"/></svg> New Games</a>
+            <a class="navsub" href="#slots"><svg class="ic"><use href="#ic-slots"/></svg> Slots</a>
+            <a class="navsub" href="#slots"><svg class="ic"><use href="#ic-gift"/></svg> Bonus Buys</a>
+            <a class="navsub" href="#slots"><svg class="ic"><use href="#ic-live"/></svg> Live Casino <span class="navsub__badge">LIVE</span></a>
+            <a class="navsub" href="#slots"><svg class="ic"><use href="#ic-star"/></svg> Game Shows</a>
+            <a class="navsub" href="#originals"><svg class="ic"><use href="#ic-wheel"/></svg> Roulette</a>
+            <a class="navsub" href="#originals"><svg class="ic"><use href="#ic-cards"/></svg> Blackjack</a>
+            <a class="navsub" href="#originals"><svg class="ic"><use href="#ic-spade"/></svg> Baccarat</a>
+          </div></div>
+        </div>
 
-        <div class="nav__divider"></div>
+        <div class="navgroup">
+          <button class="navgroup__head" type="button" aria-expanded="false">
+            <span class="navgroup__ic"><svg class="ic"><use href="#ic-trophy"/></svg></span>
+            <span class="navgroup__label">Sportsbook</span>
+            <svg class="ic navgroup__chev"><use href="#ic-chevD"/></svg>
+          </button>
+          <div class="navgroup__panel"><div class="navgroup__list">
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-ball"/></svg> Soccer</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-basket"/></svg> Basketball</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-tennis"/></svg> Tennis</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-target"/></svg> Counter-Strike</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-bat"/></svg> Cricket</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-bat"/></svg> Baseball</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-hockey"/></svg> Ice Hockey</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-mma"/></svg> MMA</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-pong"/></svg> Table Tennis</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-horse"/></svg> Horse Racing</a>
+          </div></div>
+        </div>
 
-        <nav class="nav nav--secondary" aria-label="More">
-          <a class="nav__item" href="#loyalty" data-nav="nft-vault"><span class="nav__ic"><svg class="ic"><use href="#ic-hexagon"/></svg></span> NFT Vault</a>
-          <a class="nav__item" href="#loyalty" data-nav="loyalty"><span class="nav__ic"><svg class="ic"><use href="#ic-crown"/></svg></span> Loyalty</a>
-          <a class="nav__item" href="#promos" data-nav="futures"><span class="nav__ic"><svg class="ic"><use href="#ic-candles"/></svg></span> Futures</a>
-          <a class="nav__item" href="#promos" data-nav="tournaments"><span class="nav__ic"><svg class="ic"><use href="#ic-trophy"/></svg></span> Tournaments</a>
-          <a class="nav__item" href="#loyalty" data-nav="leaderboard"><span class="nav__ic"><svg class="ic"><use href="#ic-rank"/></svg></span> Leaderboard</a>
-        </nav>
+        <div class="navgroup">
+          <button class="navgroup__head" type="button" aria-expanded="false">
+            <span class="navgroup__ic"><svg class="ic"><use href="#ic-trend"/></svg></span>
+            <span class="navgroup__label">Predictions</span>
+            <svg class="ic navgroup__chev"><use href="#ic-chevD"/></svg>
+          </button>
+          <div class="navgroup__panel"><div class="navgroup__list">
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-vote"/></svg> Politics</a>
+            <a class="navsub" href="#top"><svg class="ic"><use href="#ic-ball"/></svg> Sports</a>
+          </div></div>
+        </div>
+
+        <a class="navlink" href="#top"><span class="navgroup__ic"><svg class="ic"><use href="#ic-gauge"/></svg></span><span class="navgroup__label">Live RTP</span></a>
+
+        <div class="navblock">
+          <a class="navsub" href="#promos"><svg class="ic"><use href="#ic-megaphone"/></svg> Promotions</a>
+          <a class="navsub" href="#promos"><svg class="ic"><use href="#ic-coin"/></svg> Refer &amp; Earn</a>
+          <a class="navsub" href="#promos"><svg class="ic"><use href="#ic-ticket"/></svg> Redeem</a>
+        </div>
+
+        <a class="navlink" href="#loyalty"><span class="navgroup__ic"><svg class="ic"><use href="#ic-crown"/></svg></span><span class="navgroup__label">VIP Club</span></a>
+
+        <div class="sidestat">
+          <span class="sidestat__label">Total bets placed</span>
+          <b class="sidestat__num" id="totalBets">14,433,926,705</b>
+        </div>
       </div>
 
       <div class="sidebar__bottom">

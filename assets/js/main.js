@@ -545,7 +545,13 @@
     $("#menuBtn").setAttribute("aria-expanded", open);
   });
   scrim.addEventListener("click", () => app.classList.remove("nav-open"));
-  $$(".nav__item").forEach(a => a.addEventListener("click", () => { if (isMobileNav()) app.classList.remove("nav-open"); }));
+  $$(".navsub,.navlink").forEach(a => a.addEventListener("click", () => { if (isMobileNav()) app.classList.remove("nav-open"); }));
+
+  // sidebar accordion groups (independent expand/collapse)
+  $$(".navgroup__head").forEach(h => h.addEventListener("click", () => {
+    const open = h.closest(".navgroup").classList.toggle("is-open");
+    h.setAttribute("aria-expanded", String(open));
+  }));
 
   // desktop: retract / expand the sidebar (smooth grid-column transition)
   const sidebarToggle = $("#sidebarToggle");
@@ -594,5 +600,16 @@
     const base = 24318 + ((Math.random() * 600) | 0) - 200;
     oc.textContent = base.toLocaleString("en-US");
   }, 3500);
+
+  // sidebar "total bets placed" ticks up
+  const tb = $("#totalBets");
+  if (tb) {
+    let total = 14433926705;
+    setInterval(() => {
+      if (document.hidden) return;
+      total += (Math.random() * 4200) | 0;
+      tb.textContent = total.toLocaleString("en-US");
+    }, 1500);
+  }
 
 })();

@@ -170,7 +170,7 @@ ul{list-style:none;padding:0}
 .sidebar__inner{height:100%;width:var(--sidebar-w);padding:18px 14px 16px;
   display:flex;flex-direction:column;gap:16px;min-height:0}
 .sidebar__scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
-  display:flex;flex-direction:column;gap:16px;margin:0 -4px;padding:0 4px}
+  display:flex;flex-direction:column;gap:9px;margin:0 -4px;padding:0 4px}
 .sidebar__bottom{flex:0 0 auto;display:flex;flex-direction:column;gap:16px;
   padding-top:14px;border-top:1px solid var(--line-soft)}
 
@@ -195,20 +195,37 @@ ul{list-style:none;padding:0}
 .seg__btn.is-active{color:#fff;background:var(--grad-primary);box-shadow:var(--glow-plasma)}
 .seg__btn:active{transform:scale(.97)}
 
-/* nav */
-.nav{display:flex;flex-direction:column;gap:2px}
-.nav__item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;font-size:16px;
-  letter-spacing:.05em;color:var(--ink-2);position:relative;
-  transition:color var(--t-pop) var(--ease-out),background var(--t-pop) var(--ease-out),transform var(--t-press) var(--ease-out)}
-.nav__ic{width:22px;display:grid;place-items:center;color:var(--ink-3);transition:color var(--t-pop) var(--ease-out)}
-.nav__item:active{transform:scale(.985)}
-@media (hover:hover){.nav__item:hover{background:var(--surface);color:var(--ink)}.nav__item:hover .nav__ic{color:var(--neon-1)}}
-.nav__item.is-active{color:#fff;background:linear-gradient(100deg,rgba(68,5,228,.32),rgba(245,11,186,.12))}
-.nav__item.is-active .nav__ic{color:var(--pulse-1)}
-.nav__item.is-active::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
-  width:3px;height:18px;border-radius:99px;background:var(--grad-primary)}
-.nav__divider{height:1px;background:var(--line);margin:2px 6px}
-.nav--secondary .nav__item{font-size:15px;color:var(--ink-3)}
+/* accordion nav (grouped pills) */
+.navgroup{display:flex;flex-direction:column}
+.navgroup__head,.navlink{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+  padding:12px 14px;border-radius:13px;background:var(--surface-2);border:1px solid transparent;color:var(--ink);
+  font-size:17px;letter-spacing:.04em;cursor:pointer;touch-action:manipulation;
+  transition:background var(--t-pop) var(--ease-out),color var(--t-pop) var(--ease-out),transform var(--t-press) var(--ease-out)}
+.navgroup__head:active,.navlink:active{transform:scale(.99)}
+.navgroup__ic{width:24px;display:grid;place-items:center;color:var(--neon-1);flex:0 0 auto}
+.navgroup__ic .ic{width:20px;height:20px}
+.navgroup__label{flex:1;line-height:1}
+.navgroup__chev{width:18px;height:18px;flex:0 0 auto;color:var(--ink-3);transition:transform var(--t-pop) var(--ease-out)}
+@media (hover:hover){.navgroup__head:hover,.navlink:hover{background:var(--surface-3)}}
+.navgroup.is-open>.navgroup__head,.navlink.is-active{
+  background:linear-gradient(100deg,rgba(68,5,228,.55),rgba(68,5,228,.2));color:#fff;border-color:rgba(122,60,200,.45)}
+.navgroup.is-open>.navgroup__head .navgroup__chev{transform:rotate(180deg);color:#fff}
+/* smooth height via grid-rows 0fr -> 1fr */
+.navgroup__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--t-panel) var(--ease-out)}
+.navgroup.is-open>.navgroup__panel{grid-template-rows:1fr}
+.navgroup__list{overflow:hidden;min-height:0;display:flex;flex-direction:column;gap:2px;padding:4px 0 2px}
+.navsub{display:flex;align-items:center;gap:11px;padding:9px 12px 9px 16px;border-radius:10px;
+  color:var(--ink-3);font-size:15px;letter-spacing:.04em;
+  transition:background var(--t-pop) var(--ease-out),color var(--t-pop) var(--ease-out)}
+.navsub .ic{width:18px;height:18px;color:var(--ink-3);flex:0 0 auto;transition:color var(--t-pop) var(--ease-out)}
+@media (hover:hover){.navsub:hover{background:var(--surface);color:var(--ink)}.navsub:hover .ic{color:var(--pulse-1)}}
+.navsub.is-active{color:#fff;background:var(--surface)}
+.navsub.is-active .ic{color:var(--pulse-1)}
+.navsub__badge{margin-left:auto;font-size:10px;letter-spacing:.1em;background:var(--pulse);color:#fff;padding:2px 7px;border-radius:6px}
+.navblock{display:flex;flex-direction:column;gap:2px;background:var(--surface-2);border-radius:13px;padding:6px}
+.sidestat{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:12px 14px;display:flex;flex-direction:column;gap:3px}
+.sidestat__label{font-size:12px;letter-spacing:.08em;color:var(--ink-3)}
+.sidestat__num{font-size:21px;letter-spacing:.04em;color:#fff;line-height:1}
 
 .buycrypto{margin-top:auto}
 .sidebar__foot{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--ink-3);font-size:13px;letter-spacing:.06em}
