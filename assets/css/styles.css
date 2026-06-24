@@ -328,6 +328,8 @@ ul{list-style:none;padding:0}
 .nav__ic .uic{width:19px;height:19px}
 .gift__ic .uic{width:20px;height:20px}
 .buycrypto .uic{width:18px;height:18px;flex:0 0 auto}
+.navsub .uic{width:18px;height:18px;flex:0 0 auto}
+.navgroup__ic .uic{width:20px;height:20px}
 /* colored uploaded icons rendered as <img> */
 .ui__img{width:18px;height:18px;object-fit:contain;display:block}
 .coin__mark .ui__img{width:18px;height:18px;border-radius:50%}

@@ -314,7 +314,7 @@
       wireIcons(".nav__item[data-nav]", m.sidebar, "nav");
       wireIcons("[data-topnav]", m.topnav, "topnav");
       wireIcons("[data-ui]", m.ui, "ui");
-      if (m.sidebar) $$(".section__title[data-secicon]").forEach(h => { const f = m.sidebar[h.dataset.secicon]; if (f) inlineIcon(h, f); });
+      if (m.sidebar) $$("[data-secicon]").forEach(h => { const f = m.sidebar[h.dataset.secicon]; if (f) inlineIcon(h, f); });
       if (m.features) $$("[data-feature]").forEach(h => { const f = m.features[h.dataset.feature]; if (f) imgIcon(h, f, "pcard__img"); });
       wireFill("[data-reward]", m.rewards, "reward", "rw__img");
       wireFill("[data-stat]", m.stats, "stat", "tile__icimg");
