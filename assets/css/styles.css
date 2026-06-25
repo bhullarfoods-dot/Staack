@@ -208,7 +208,7 @@ ul{list-style:none;padding:0}
 .navgroup__chev{width:18px;height:18px;flex:0 0 auto;color:var(--ink-3);transition:transform var(--t-pop) var(--ease-out)}
 @media (hover:hover){.navgroup__head:hover,.navlink:hover{background:var(--surface-3)}}
 .navgroup.is-open>.navgroup__head,.navlink.is-active{
-  background:linear-gradient(100deg, rgb(20 18 53 / 34%), rgb(44 40 82)));color:#fff;border-color:rgba(122,60,200,.45)}
+  background:linear-gradient(100deg, rgb(20 18 53 / 34%), rgb(44 40 82));color:#fff;border-color:rgba(122,60,200,.45)}
 .navgroup.is-open>.navgroup__head .navgroup__chev{transform:rotate(180deg);color:#fff}
 /* smooth height via grid-rows 0fr -> 1fr */
 .navgroup__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--t-panel) var(--ease-out)}
