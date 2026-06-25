@@ -92,7 +92,9 @@
     "mma": "sidebar-extras/mma.svg",
     "ttennis": "sidebar-extras/ttennis.svg",
     "horse": "sidebar-extras/horse-racing.svg",
-    "politics": "sidebar-extras/politics.svg"
+    "politics": "sidebar-extras/politics.svg",
+    "g-predictions": "sidebar-extras/prediction.svg",
+    "g-rtp": "sidebar-extras/rtp.svg"
   },
   "topnav": {
     "search": "topnav/search.svg",
