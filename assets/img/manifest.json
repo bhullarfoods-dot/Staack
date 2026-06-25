@@ -79,7 +79,20 @@
     "pred-sports": "sidebar/sports.svg",
     "promotions": "sidebar/daily%20bonus.svg",
     "refer": "sidebar/referral.svg",
-    "redeem": "sidebar/deposit%20bonus.svg"
+    "redeem": "sidebar/deposit%20bonus.svg",
+    "roulette": "sidebar-extras/roullette.svg",
+    "blackjack": "sidebar-extras/blackjack.svg",
+    "baccarat": "sidebar-extras/baccarat.svg",
+    "soccer": "sidebar-extras/soccer.svg",
+    "basketball": "sidebar-extras/basketball.svg",
+    "tennis": "sidebar-extras/tennis.svg",
+    "cricket": "sidebar-extras/cricket.svg",
+    "baseball": "sidebar-extras/baseball.svg",
+    "hockey": "sidebar-extras/ice-hockey.svg",
+    "mma": "sidebar-extras/mma.svg",
+    "ttennis": "sidebar-extras/ttennis.svg",
+    "horse": "sidebar-extras/horse-racing.svg",
+    "politics": "sidebar-extras/politics.svg"
   },
   "topnav": {
     "search": "topnav/search.svg",
