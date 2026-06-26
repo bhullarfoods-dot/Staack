@@ -714,16 +714,20 @@ ul{list-style:none;padding:0}
   .content{gap:24px}
   .hslide{flex-basis:94%}
   .hslide__content{max-width:86%;padding:20px 22px}
-  .spromo{padding:18px}
+  /* stack promos full-width so each character has room (no letterboxing) */
+  .promo-row{flex-direction:column;gap:14px}
+  .spromo{padding:18px;min-height:132px}
   .spromo h3{font-size:21px}
   .spromo p{font-size:15px}
+  .spromo__txt{max-width:58%}
+  .spromo__img{height:150%;max-width:46%;right:10px}
 }
 @media (max-width:560px){
   .content{padding:14px 12px 28px;gap:22px}
   .section__title{font-size:clamp(20px,6vw,26px)}
-  .hslide{flex-basis:96%;min-height:170px}
-  .hslide__content{max-width:90%;padding:16px 18px}
-  .hslide__char{height:116%;bottom:-14px;max-width:38%}
+  .hslide{flex-basis:96%;min-height:184px}
+  .hslide__content{max-width:none;width:56%;padding:16px}
+  .hslide__char{height:126%;bottom:-10px;right:8px;max-width:44%}
   .bento{grid-template-columns:1fr}
   .tile--level,.tile--rewards{grid-column:span 1}
   .tile--level{grid-row:auto}
