@@ -767,7 +767,7 @@ ul{list-style:none;padding:0}
   /* hero: taller so heading + CTAs never bleed out; CTAs wrap; tighter type */
   .hslide{flex-basis:96%;min-height:222px}
   .hslide__content{max-width:none;width:60%;padding:14px;gap:7px;justify-content:center}
-  .hslide__char{height:100%;bottom:0;right:3%;max-width:32%}
+  .hslide__char{height:100%;bottom:0;right:2%;max-width:50%}
   .hbadge{font-size:10px;padding:2px 7px}
   .hslide__cta{flex-wrap:wrap;gap:8px}
   .hslide__cta .btn{padding:9px 14px;font-size:14px}
