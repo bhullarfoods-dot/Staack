@@ -340,7 +340,7 @@ ul{list-style:none;padding:0}
 .pcard__art img{width:300px;height:300px;object-fit:contain;display:block}
 .rw__img{width:200%;height:200%;object-fit:contain;display:block}
 .msg__avimg{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
-.tile__icimg{width:200%;height:200%;object-fit:contain;display:block}
+.tile__icimg{width:100%;height:100%;object-fit:contain;display:block}
 .level__img{width:140%;height:140%;margin-top: -11px;object-fit:contain;display:block}
 
 /* side promos */
@@ -499,7 +499,7 @@ ul{list-style:none;padding:0}
 .level__char{position:absolute;right:-10px;bottom:0;top:-50px;height:100%;z-index:0;pointer-events:none}
 .level__char:empty{display:none}
 .level__char .level__img{height:100%;width:auto;max-width:220px;object-fit:contain;object-position:right bottom}
-.tile__ic{position:absolute;top:-28px;right:95px;width:76px;height:76px;z-index:2}
+.tile__ic{position:absolute;top:14px;right:14px;width:52px;height:52px;z-index:2}
 .tile__ic:empty{display:none}
 .tile--stat{justify-content:center}
 .tile--stat strong{font-size:36px;letter-spacing:.02em;color:#fff;line-height:.9}
@@ -730,14 +730,18 @@ ul{list-style:none;padding:0}
   .hslide__char{height:126%;bottom:-10px;right:8px;max-width:44%}
   .bento{grid-template-columns:1fr}
   .tile--level,.tile--rewards{grid-column:span 1}
-  .tile--level{grid-row:auto}
+  .tile--level{grid-row:auto;min-height:150px}
+  /* level character: contain to the tile height, anchored bottom-right (no top crop) */
+  .level__char{top:auto;bottom:0;right:-4px;height:94%}
+  .level__char .level__img{height:100%;width:auto;max-width:124px;margin-top:0}
+  .level__meta strong{font-size:22px}
   .grid,.content-grid.chat-collapsed .grid{grid-template-columns:repeat(2,1fr)}
   .pubs{grid-template-columns:repeat(2,1fr)}
   .excl{flex-direction:column;gap:12px;padding:18px}
   .promo-row{gap:12px;margin-top:24px}
-  /* stat-icon sits neatly inside the now full-width tile */
-  .tile__ic{top:12px;right:12px;bottom:auto;width:54px;height:54px}
-  .tile--stat{min-height:118px}
+  /* stat-icon vertically centered on the right of the full-width tile */
+  .tile__ic{top:50%;right:14px;transform:translateY(-50%);width:64px;height:64px}
+  .tile--stat{min-height:118px;padding-right:90px}
   .tile--stat strong{font-size:30px}
   /* tighter mines board */
   .board{padding:12px}
