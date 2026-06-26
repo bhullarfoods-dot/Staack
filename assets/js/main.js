@@ -569,6 +569,26 @@
     chatToggle.setAttribute("aria-expanded", isFloatChat() ? on : !on);
   });
 
+  // search (no backend in this demo) — both top bar and bottom bar
+  $$('[data-topnav="search"], #botSearch').forEach(b => b.addEventListener("click", () => toast("Search is coming soon")));
+
+  // mobile bottom nav
+  const botbar = $(".botbar");
+  if (botbar) {
+    botbar.addEventListener("click", e => {
+      const a = e.target.closest("[data-bnav]"); if (!a) return;
+      const t = $(a.getAttribute("href"));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
+      $$(".botbar__item").forEach(i => i.classList.remove("is-active"));
+      a.classList.add("is-active");
+    });
+    const botChat = $("#botChat");
+    if (botChat) botChat.addEventListener("click", () => {
+      chatToggle.click();
+      botChat.classList.toggle("is-active", grid2.classList.contains("chat-open"));
+    });
+  }
+
   // rail arrows
   $$("[data-rail]").forEach(btn => btn.addEventListener("click", () => {
     const r = $("#" + btn.dataset.rail);

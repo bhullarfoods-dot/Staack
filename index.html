@@ -175,6 +175,7 @@
     <header class="topbar">
       <button class="iconbtn topbar__menu" id="menuBtn" data-topnav="menu" aria-label="Toggle navigation" aria-expanded="false"><svg class="ic"><use href="#ic-menu"/></svg></button>
       <button class="iconbtn topbar__collapse" id="sidebarToggle" aria-label="Collapse sidebar" aria-expanded="true"><svg class="ic"><use href="#ic-chevL"/></svg></button>
+      <a class="logo topbar__logo" href="#" aria-label="NodeRoll home">NodeRoll</a>
 
       <div class="coin">
         <span class="coin__mark" data-ui="node" aria-hidden="true"></span>
@@ -486,6 +487,15 @@
 
     </div><!-- /content-grid -->
   </div><!-- /main-region -->
+
+  <!-- ===================== MOBILE BOTTOM NAV ===================== -->
+  <nav class="botbar" aria-label="Quick navigation">
+    <a class="botbar__item" href="#originals" data-bnav><span class="botbar__ic"><svg class="ic"><use href="#ic-spade"/></svg></span><span class="botbar__lbl">Casino</span></a>
+    <a class="botbar__item" href="#top" data-bnav><span class="botbar__ic"><svg class="ic"><use href="#ic-trophy"/></svg></span><span class="botbar__lbl">Sports</span></a>
+    <button class="botbar__item botbar__item--mid" type="button" id="botSearch" aria-label="Search"><span class="botbar__ic"><svg class="ic"><use href="#ic-search"/></svg></span><span class="botbar__lbl">Search</span></button>
+    <a class="botbar__item" href="#promos" data-bnav><span class="botbar__ic"><svg class="ic"><use href="#ic-gift"/></svg></span><span class="botbar__lbl">Promos</span></a>
+    <button class="botbar__item" type="button" id="botChat" aria-label="Toggle chat"><span class="botbar__ic"><svg class="ic"><use href="#ic-chat"/></svg></span><span class="botbar__lbl">Chat</span></button>
+  </nav>
 </div><!-- /app -->
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>

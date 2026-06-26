@@ -238,6 +238,7 @@ ul{list-style:none;padding:0}
   background:rgb(25 25 57);border-bottom:1px solid var(--line)}
 .topbar__menu{display:none}
 .topbar__collapse{display:grid;flex:0 0 auto}
+.topbar__logo{display:none;flex:0 0 auto;font-size:24px;line-height:1;padding:0 2px;color:#fff}
 .topbar__spacer{flex:1}
 
 .coin{display:flex;align-items:center;gap:7px;padding:6px 12px;border-radius:var(--r-pill);
@@ -657,6 +658,36 @@ ul{list-style:none;padding:0}
 /* utilities */
 .hide-sm{}
 
+/* ===================== mobile bottom nav (Stake/Roobet-style) ===================== */
+.botbar{display:none}
+@media (max-width:860px){
+  .botbar{display:grid;grid-template-columns:repeat(5,1fr);align-items:stretch;
+    position:fixed;left:0;right:0;bottom:0;z-index:var(--z-sticky);
+    height:calc(62px + env(safe-area-inset-bottom,0px));
+    padding:0 4px env(safe-area-inset-bottom,0px);
+    background:rgb(20 20 48);border-top:1px solid var(--line);
+    box-shadow:0 -12px 30px -18px rgba(4,3,20,.95)}
+  .botbar__item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    min-width:0;height:62px;color:var(--ink-3);font-size:11px;letter-spacing:.05em;
+    background:none;border:0;touch-action:manipulation;
+    transition:color var(--t-pop) var(--ease-out),transform var(--t-press) var(--ease-out)}
+  .botbar__ic{display:grid;place-items:center}
+  .botbar__ic .ic{width:23px;height:23px}
+  .botbar__lbl{line-height:1;white-space:nowrap}
+  .botbar__item:active{transform:scale(.93)}
+  .botbar__item.is-active{color:var(--ink)}
+  .botbar__item.is-active .ic{color:var(--neon-1)}
+  @media (hover:hover){.botbar__item:hover{color:var(--ink)}}
+  /* elevated center action */
+  .botbar__item--mid{justify-content:flex-end}
+  .botbar__item--mid .botbar__ic{width:54px;height:54px;border-radius:50%;margin-top:-24px;
+    background:var(--grad-primary);color:#fff;box-shadow:var(--glow-plasma);border:4px solid rgb(20 20 48)}
+  .botbar__item--mid .botbar__ic .ic{width:25px;height:25px}
+  /* keep page content & chat clear of the fixed bar */
+  .content{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+  .app.nav-open .botbar{display:none}
+}
+
 /* ============================== responsive ========================= */
 /* jumped-to sections clear the sticky top bar */
 [id]{scroll-margin-top:calc(var(--topbar-h) + 10px)}
@@ -698,7 +729,12 @@ ul{list-style:none;padding:0}
   .app.nav-open .sidebar{transform:none;box-shadow:var(--sh-pop)}
   .topbar__menu{display:grid}
   .topbar__collapse{display:none}
+  .topbar__logo{display:block}
   .gifts,.onlinestat,.hide-sm{display:none}
+  /* chat + search live in the bottom bar on mobile — keep the top bar light */
+  .iconbtn--chat,.topbar [data-topnav="search"]{display:none}
+  /* chat drawer stops above the bottom bar so its Chat toggle stays tappable */
+  .chat{height:auto;bottom:calc(62px + env(safe-area-inset-bottom,0px))}
   .topbar{gap:8px;padding:0 12px}
   .topbar__menu,.topbar .iconbtn,.balance,.coin__buy,.topbar .btn{flex:0 0 auto}
   .coin__delta{display:none}
@@ -760,14 +796,15 @@ ul{list-style:none;padding:0}
   .bets__head>:nth-child(4),.bet>:nth-child(4){display:none}
 }
 @media (max-width:400px){
-  .topbar{gap:6px;padding:0 10px}
-  .balance{padding:5px 5px 5px 10px;gap:6px}
-  .balance__amt{font-size:15px}
-  .btn--sm{padding:7px 11px;font-size:13px}
+  .topbar{gap:5px;padding:0 8px}
+  .balance{padding:4px 4px 4px 8px;gap:5px}
+  .balance__amt{font-size:13.5px}
+  .balance__cur{display:none}        /* drop the currency glyph to make room */
+  .balance__add{width:26px;height:26px;font-size:18px}
+  .btn--sm{padding:6px 10px;font-size:12px}
   .logo{font-size:26px}
+  .topbar__logo{font-size:20px}
   .ingame{font-size:16px}
-  /* guarantee room for balance + sign up + chat by dropping search */
-  .topbar [data-topnav="search"]{display:none}
 }
 
 /* nav-open backdrop on mobile */
