@@ -658,6 +658,9 @@ ul{list-style:none;padding:0}
 .hide-sm{}
 
 /* ============================== responsive ========================= */
+/* jumped-to sections clear the sticky top bar */
+[id]{scroll-margin-top:calc(var(--topbar-h) + 10px)}
+
 @media (max-width:1180px){
   .hslide{flex-basis:calc(100% / 1.5 - 8px)}
   .promo-row{flex-wrap:wrap}
@@ -675,15 +678,18 @@ ul{list-style:none;padding:0}
   .promos{grid-template-columns:1fr}
   .footer__top{grid-template-columns:1fr;gap:26px}
   .footer__nav{grid-template-columns:repeat(3,1fr)}
-  .grid{grid-template-columns:repeat(4,1fr)}
+  .grid,.content-grid.chat-collapsed .grid{grid-template-columns:repeat(4,1fr)}
   .pubs{grid-template-columns:repeat(4,1fr)}
 }
 @media (max-width:980px){
   .hslide{flex-basis:88%}
   .hslide__content{max-width:78%}
-  .grid{grid-template-columns:repeat(3,1fr)}
+  .grid,.content-grid.chat-collapsed .grid{grid-template-columns:repeat(3,1fr)}
   .excl__char{display:none !important}
   .excl__txt{max-width:none}
+  /* side characters waste width on tablet — drop them so the board centers full */
+  .board__char{display:none !important}
+  .mines{max-width:520px}
 }
 @media (max-width:860px){
   .app{grid-template-columns:1fr}
@@ -693,21 +699,58 @@ ul{list-style:none;padding:0}
   .topbar__menu{display:grid}
   .topbar__collapse{display:none}
   .gifts,.onlinestat,.hide-sm{display:none}
+  .topbar{gap:8px;padding:0 12px}
+  .topbar__menu,.topbar .iconbtn,.balance,.coin__buy,.topbar .btn{flex:0 0 auto}
+  .coin__delta{display:none}
   .content{padding:16px 14px 32px}
   .footer__nav{grid-template-columns:repeat(2,1fr);gap:16px}
   .pubs{grid-template-columns:repeat(3,1fr)}
   .bets__head,.bet{grid-template-columns:2fr 1fr 1fr 1fr}
   .bets__head>:nth-child(2),.bets__head>:nth-child(3),.bet__time,.bet__player{display:none}
 }
-@media (max-width:520px){
-  .hslide{flex-basis:92%}
-  .hslide__content{max-width:84%;padding:18px}
+@media (max-width:680px){
+  /* the NODE price ticker + its Buy button are non-essential on phones */
+  .coin,.coin__buy{display:none}
+  .content{gap:24px}
+  .hslide{flex-basis:94%}
+  .hslide__content{max-width:86%;padding:20px 22px}
+  .spromo{padding:18px}
+  .spromo h3{font-size:21px}
+  .spromo p{font-size:15px}
+}
+@media (max-width:560px){
+  .content{padding:14px 12px 28px;gap:22px}
+  .section__title{font-size:clamp(20px,6vw,26px)}
+  .hslide{flex-basis:96%;min-height:170px}
+  .hslide__content{max-width:90%;padding:16px 18px}
+  .hslide__char{height:116%;bottom:-14px;max-width:38%}
   .bento{grid-template-columns:1fr}
   .tile--level,.tile--rewards{grid-column:span 1}
-  .coin__delta{display:none}
-  .grid{grid-template-columns:repeat(2,1fr)}
+  .tile--level{grid-row:auto}
+  .grid,.content-grid.chat-collapsed .grid{grid-template-columns:repeat(2,1fr)}
   .pubs{grid-template-columns:repeat(2,1fr)}
-  .excl{flex-direction:column;gap:12px}
+  .excl{flex-direction:column;gap:12px;padding:18px}
+  .promo-row{gap:12px;margin-top:24px}
+  /* stat-icon sits neatly inside the now full-width tile */
+  .tile__ic{top:12px;right:12px;bottom:auto;width:54px;height:54px}
+  .tile--stat{min-height:118px}
+  .tile--stat strong{font-size:30px}
+  /* tighter mines board */
+  .board{padding:12px}
+  .mines{gap:7px}
+  /* latest bets → 3 columns (Game · Multiplier · Payout) */
+  .bets__head,.bet{grid-template-columns:2fr 1fr 1fr;padding:11px 14px}
+  .bets__head>:nth-child(4),.bet>:nth-child(4){display:none}
+}
+@media (max-width:400px){
+  .topbar{gap:6px;padding:0 10px}
+  .balance{padding:5px 5px 5px 10px;gap:6px}
+  .balance__amt{font-size:15px}
+  .btn--sm{padding:7px 11px;font-size:13px}
+  .logo{font-size:26px}
+  .ingame{font-size:16px}
+  /* guarantee room for balance + sign up + chat by dropping search */
+  .topbar [data-topnav="search"]{display:none}
 }
 
 /* nav-open backdrop on mobile */
