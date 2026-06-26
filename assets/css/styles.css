@@ -499,7 +499,7 @@ ul{list-style:none;padding:0}
 .level__char{position:absolute;right:-10px;bottom:0;top:-50px;height:100%;z-index:0;pointer-events:none}
 .level__char:empty{display:none}
 .level__char .level__img{height:100%;width:auto;max-width:220px;object-fit:contain;object-position:right bottom}
-.tile__ic{position:absolute;top:14px;right:14px;width:52px;height:52px;z-index:2}
+.tile__ic{position:absolute;top:14px;right:14px;width:58px;height:58px;z-index:2}
 .tile__ic:empty{display:none}
 .tile--stat{justify-content:center}
 .tile--stat strong{font-size:36px;letter-spacing:.02em;color:#fff;line-height:.9}
@@ -721,27 +721,36 @@ ul{list-style:none;padding:0}
   .spromo p{font-size:15px}
   .spromo__txt{max-width:58%}
   .spromo__img{height:150%;max-width:46%;right:10px}
+  /* race art is a landscape image, so it needs more width to match the
+     refer character's height (refer is the reference size) */
+  .spromo--a .spromo__txt{max-width:52%}
+  .spromo--a .spromo__img{height:200%;max-width:67%}
 }
 @media (max-width:560px){
   .content{padding:14px 12px 28px;gap:22px}
   .section__title{font-size:clamp(20px,6vw,26px)}
-  .hslide{flex-basis:96%;min-height:184px}
-  .hslide__content{max-width:none;width:56%;padding:16px}
-  .hslide__char{height:126%;bottom:-10px;right:8px;max-width:44%}
+  /* hero: taller so heading + CTAs never bleed out; CTAs wrap; tighter type */
+  .hslide{flex-basis:96%;min-height:222px}
+  .hslide__content{max-width:none;width:60%;padding:14px;gap:7px;justify-content:center}
+  .hslide__char{height:122%;bottom:-8px;right:6px;max-width:40%}
+  .hbadge{font-size:10px;padding:2px 7px}
+  .hslide__cta{flex-wrap:wrap;gap:8px}
+  .hslide__cta .btn{padding:9px 14px;font-size:14px}
   .bento{grid-template-columns:1fr}
   .tile--level,.tile--rewards{grid-column:span 1}
-  .tile--level{grid-row:auto;min-height:150px}
-  /* level character: contain to the tile height, anchored bottom-right (no top crop) */
-  .level__char{top:auto;bottom:0;right:-4px;height:94%}
-  .level__char .level__img{height:100%;width:auto;max-width:124px;margin-top:0}
-  .level__meta strong{font-size:22px}
+  /* level: reserve right space so the bar/text never sit under the (bigger) character */
+  .tile--level{grid-row:auto;min-height:172px;padding-right:150px}
+  .level__char{top:auto;bottom:0;right:2px;height:auto}
+  .level__char .level__img{height:auto;width:142px;max-width:none;margin-top:0;object-position:right bottom}
+  .level__badge{width:58px;height:58px;border-radius:14px;font-size:20px}
+  .level__meta strong{font-size:21px}
   .grid,.content-grid.chat-collapsed .grid{grid-template-columns:repeat(2,1fr)}
   .pubs{grid-template-columns:repeat(2,1fr)}
   .excl{flex-direction:column;gap:12px;padding:18px}
   .promo-row{gap:12px;margin-top:24px}
-  /* stat-icon vertically centered on the right of the full-width tile */
-  .tile__ic{top:50%;right:14px;transform:translateY(-50%);width:64px;height:64px}
-  .tile--stat{min-height:118px;padding-right:90px}
+  /* bigger stat icons, centered on the right of the full-width tile */
+  .tile__ic{top:50%;right:14px;transform:translateY(-50%);width:84px;height:84px}
+  .tile--stat{min-height:132px;padding-right:112px}
   .tile--stat strong{font-size:30px}
   /* tighter mines board */
   .board{padding:12px}
