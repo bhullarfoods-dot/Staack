@@ -299,15 +299,15 @@ ul{list-style:none;padding:0}
 .hero__track::-webkit-scrollbar{display:none}
 /* exactly 2 banners in view */
 .hslide{position:relative;flex:0 0 calc(100% / 2 - 8px);scroll-snap-align:start;
-  aspect-ratio:16 / 6.9;min-height:200px;border-radius:var(--r-lg);overflow:visible;
+  aspect-ratio:16 / 6.9;min-height:200px;border-radius:var(--r-lg);overflow-x:clip;overflow-y:visible;
   border:1px solid var(--line-2);box-shadow:var(--sh-2);display:flex;align-items:stretch}
 .hslide__bg{position:absolute;inset:0;z-index:0;border-radius:var(--r-lg);overflow:hidden}
 .hslide__bg img{width:100%;height:100%;object-fit:cover;display:block}
 .hslide__scrim{position:absolute;inset:0;z-index:1;border-radius:var(--r-lg);
   background:linear-gradient(90deg,rgba(6,5,26,.84) 0%,rgba(6,5,26,.52) 44%,rgba(6,5,26,0) 72%)}
 /* character bleeds ~14% above the banner for a 3D pop (track padding keeps it un-clipped) */
-.hslide__char{position:absolute;right:18px;bottom:-35px;top:auto;z-index:2;height:130%;width:auto;max-width:42%;
-  object-fit:contain;object-position:right bottom;pointer-events:none;filter:drop-shadow(0 14px 26px rgba(0,0,0,.45))}
+.hslide__char{position:absolute;right:3%;bottom:-35px;top:auto;z-index:2;height:130%;width:auto;max-width:40%;
+  object-fit:contain;object-position:center bottom;pointer-events:none;filter:drop-shadow(0 14px 26px rgba(0,0,0,.45))}
 .hslide__content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:flex-start;
   justify-content:center;gap:10px;padding:28px 30px;width:62%;container-type:inline-size}
 .hslide__badges{display:flex;flex-wrap:wrap;gap:6px}
@@ -768,7 +768,7 @@ ul{list-style:none;padding:0}
   /* hero: taller so heading + CTAs never bleed out; CTAs wrap; tighter type */
   .hslide{flex-basis:96%;min-height:222px}
   .hslide__content{max-width:none;width:60%;padding:14px;gap:7px;justify-content:center}
-  .hslide__char{height:122%;bottom:-8px;right:6px;max-width:40%}
+  .hslide__char{height:122%;bottom:-8px;right:2%;max-width:38%}
   .hbadge{font-size:10px;padding:2px 7px}
   .hslide__cta{flex-wrap:wrap;gap:8px}
   .hslide__cta .btn{padding:9px 14px;font-size:14px}
