@@ -785,8 +785,8 @@ ul{list-style:none;padding:0}
   .excl{flex-direction:column;gap:12px;padding:18px}
   .promo-row{gap:12px;margin-top:24px}
   /* bigger stat icons, centered on the right of the full-width tile */
-  .tile__ic{top:50%;right:14px;transform:translateY(-50%);width:84px;height:84px}
-  .tile--stat{min-height:132px;padding-right:112px}
+  .tile__ic{top:50%;right:14px;transform:translateY(-50%);width:124px;height:124px}
+  .tile--stat{min-height:152px;padding-right:150px}
   .tile--stat strong{font-size:30px}
   /* tighter mines board */
   .board{padding:12px}
